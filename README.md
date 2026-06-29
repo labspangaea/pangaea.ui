@@ -3,11 +3,18 @@
 The Pangaea two-hex blue-on-white system (navy `#203150` + electric blue `#3FA9F5`, on
 white, dual-theme) — shipped as **independently versioned `@pangaea/ds-*` packages** with an
 Astro **gallery** that catalogs them. Tokens are ported verbatim from
-[`pangaea.id`](../pangaea.id) (`DESIGN.md` / `revamp.css`), so there is zero visual drift from
-the live site.
+[pangaea.id](https://www.pangaea.id) (`revamp.css`), so there is zero visual drift from the live
+site.
 
 Modeled structurally on the Kanvo gallery (Astro + Tailwind v4 + SCSS tokens), extended with
 **per-component versioning** (Changesets) that Kanvo doesn't have.
+
+The Storybook-style **gallery** — grouped component menu, live canvas, an *exhaustive* control per
+prop (arrays as JSON) + a copyable usage snippet — in both themes:
+
+![The Pangaea design system gallery — light theme](docs/gallery-light.png)
+
+![The Pangaea design system gallery — dark theme](docs/gallery-dark.png)
 
 ## Topology — one repo, many packages, one registry
 
@@ -19,6 +26,7 @@ pangaea.ui/
     card/      @pangaea/ds-card     hairline border, soft shadow, hover lift
     section/   @pangaea/ds-section  Container · Section · Grid · Kicker · H1/H2 · Lead · SectionHead · heroAccent()
     chart/     @pangaea/ds-chart    theme-aware Chart.js wrapper (reads --rv-* live)
+    …          (+ 32 more component packages — full roster under "Components")
   apps/
     gallery/   @pangaea/gallery     the /gallery catalog (Astro island; not published)
 ```
@@ -47,7 +55,7 @@ See the plan for the full exploration.
 
 ```bash
 npm install            # install the workspace (npm workspaces — no pnpm needed)
-npm run build:pkgs     # build the 5 ds-* packages (sass for tokens, tsc for components)
+npm run build:pkgs     # build all ds-* packages (sass for tokens, tsc for components)
 npm run gallery        # astro dev → http://localhost:4321/gallery  (the catalog, #Chart etc.)
 npm run build          # build packages + the gallery (static)
 ```
@@ -88,7 +96,7 @@ Site-gap blocks ported faithfully from the live site (`revamp.css`): `ds-stat` (
 Core:
 
 `ds-tokens` · `ds-button` · `ds-card` · `ds-section` (+ `heroAccent`) · `ds-chart` ·
-`ds-navbar` · `ds-badge` (accent/solid/success/warning/red/soon) · `ds-callout` · `ds-quote` ·
+`ds-navbar` · `ds-badge` (accent/solid/soon/red/free/claude) · `ds-callout` · `ds-quote` ·
 `ds-field` (Input/Textarea/Select/Checkbox/Radio) · `ds-toggle` (Switch/LangToggle/ThemeToggle) ·
 `ds-tabs` · `ds-pagination` (numbered + `PaginationNav` URL pager) · `ds-accordion` · `ds-code` ·
 `ds-tooltip` · `ds-modal` (native `<dialog>`) · `ds-progress` · `ds-avatar` · `ds-filedropzone` ·
@@ -100,18 +108,23 @@ Core:
 `apps/gallery` is a **3-pane component explorer** (no Storybook dependency — built in the Astro
 React island): **left** = grouped component menu · **center** = isolated live canvas (dotted
 backdrop) · **right** = **Controls** (an *exhaustive* knob per scalar prop) + a **copyable Usage**
-snippet that updates from the controls + an **Info** panel. Light/dark toggle + EN/ID in the
-toolbar; deep-links via `#<component>`. Each story declares its controls in
-`src/gallery/stories.tsx` — keep them exhaustive when you add a component.
+snippet that updates from the controls + an **Info** panel. Light/dark toggle + a working EN/ID
+toggle (localizes the Hero/CTA action labels) in the toolbar; deep-links via `#<component>`. Each
+story declares its controls in `src/gallery/stories.tsx` — keep them exhaustive when you add a
+component (arrays use a JSON object control, never string concat).
 
 ## Status
 
-- 23 packages build clean (`npm run build:pkgs`). Gallery builds static (`npm run build`).
-- Playwright-validated: 3-pane explorer, controls reactive (variant→canvas+usage), light **and**
-  dark, responsive (desktop 3-pane → tablet 2-pane → mobile chip menu), **0 console errors, 0
-  overflow** at 1440 and 390.
-- Static impeccable audit: **17/20** (A11y 3 · Perf 3 · Theming 4 · Responsive 3 · Anti-patterns 4).
-- Wave 2 (queued): social icons, pricing block, client/partner/plugin/team card variants,
-  timeline/stepper (horizontal + vertical).
-- Before first publish: `git init` is done — set the `@pangaea` GitHub Packages registry +
+- **All 38 packages build clean** (`npm run build:pkgs`); the gallery builds static (`npm run build`)
+  and typechecks (`npx tsc --noEmit -p apps/gallery/tsconfig.json`) with **0 errors**.
+- **Accessibility (WCAG AA, both themes):** associated control labels, `nav`/`main`/`aside`
+  landmarks, a heading outline, `aria-current`, a skip link, an AA-contrast focus ring, and a
+  `role="img"` alt on the chart canvas. Playwright-verified: **0 console errors**, no overflow at
+  1440 / 768 / 390, ≥44px touch targets.
+- **Motion craft (Emil Kowalski principles):** origin-aware tooltips (scale from the trigger), press
+  feedback on every pressable, hover-lifts gated behind `@media (hover: hover)` so they don't stick
+  on touch, a single ease-out `--rv-ease`, and a `prefers-reduced-motion` fallback on every animation.
+- **Zero drift:** every component is diffed against `revamp.css` property-by-property (light + dark +
+  responsive + pseudo-states). Always check the live site before changing a component (see CLAUDE.md).
+- **Before first publish:** the repo is live on GitHub. Set the `@pangaea` GitHub Packages registry +
   `NODE_AUTH_TOKEN` in CI, then `npm run changeset` for the initial `0.1.0` release.
