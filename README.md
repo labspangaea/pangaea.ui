@@ -1,7 +1,7 @@
 # pangaea.ui — Pangaea Design System
 
 The Pangaea two-hex blue-on-white system (navy `#203150` + electric blue `#3FA9F5`, on
-white, dual-theme) — shipped as **independently versioned `@pangaea/ds-*` packages** with an
+white, dual-theme) — shipped as **independently versioned `@labspangaea/ds-*` packages** with an
 Astro **gallery** that catalogs them. Tokens are ported verbatim from
 [pangaea.id](https://www.pangaea.id) (`revamp.css`), so there is zero visual drift from the live
 site.
@@ -21,18 +21,18 @@ prop (arrays as JSON) + a copyable usage snippet — in both themes:
 ```
 pangaea.ui/
   packages/
-    tokens/    @pangaea/ds-tokens   SCSS token source → CSS vars (light+dark) + Tailwind v4 preset + self-hosted fonts
-    button/    @pangaea/ds-button   pill button, 3 variants, press feedback
-    card/      @pangaea/ds-card     hairline border, soft shadow, hover lift
-    section/   @pangaea/ds-section  Container · Section · Grid · Kicker · H1/H2 · Lead · SectionHead · heroAccent()
-    chart/     @pangaea/ds-chart    theme-aware Chart.js wrapper (reads --rv-* live)
+    tokens/    @labspangaea/ds-tokens   SCSS token source → CSS vars (light+dark) + Tailwind v4 preset + self-hosted fonts
+    button/    @labspangaea/ds-button   pill button, 3 variants, press feedback
+    card/      @labspangaea/ds-card     hairline border, soft shadow, hover lift
+    section/   @labspangaea/ds-section  Container · Section · Grid · Kicker · H1/H2 · Lead · SectionHead · heroAccent()
+    chart/     @labspangaea/ds-chart    theme-aware Chart.js wrapper (reads --rv-* live)
     …          (+ 32 more component packages — full roster under "Components")
   apps/
-    gallery/   @pangaea/gallery     the /gallery catalog (Astro island; not published)
+    gallery/   @labspangaea/gallery     the /gallery catalog (Astro island; not published)
 ```
 
 Each component is its **own package with its own version**, all published to **one** registry
-(`@pangaea` on GitHub Packages). This is the standard per-component-versioning shape (Radix/MUI/
+(`@labspangaea` on GitHub Packages). This is the standard per-component-versioning shape (Radix/MUI/
 Chakra) — not a repo-per-component polyrepo, and not one monolithic package.
 
 ## Federation-ready, federation-not-built (deliberate)
@@ -41,7 +41,7 @@ Per-component versioning is ~90% of the way to module federation, so the package
 keep that door open at near-zero cost — but **no federation machinery is built** (YAGNI):
 
 - `react`/`react-dom` are **peerDependencies** in every package (→ future `shared: { react: singleton }`).
-- **Tokens are their own package** (`@pangaea/ds-tokens`) that components depend on (→ the future MF shared singleton).
+- **Tokens are their own package** (`@labspangaea/ds-tokens`) that components depend on (→ the future MF shared singleton).
 - Each package is **isolated ESM** with a clean barrel `exports` (→ that list is the future `exposes:`).
 - CSS ships as a **plain `styles.css`** per package (not imported in JS) — consumable by the
   non-Tailwind `pangaea.id` today, and self-contained for a future remote.
@@ -66,7 +66,7 @@ npm run build          # build packages + the gallery (static)
 
 > CSS note (a deliberate ponytail simplification): components ship the **proven `rv-*` CSS**
 > off the `--rv-*` tokens (zero visual drift, AA-safe, consumable without Tailwind). Tailwind v4
-> is adopted at the **gallery + `@pangaea/ds-tokens/theme.css` preset** layer — the
+> is adopted at the **gallery + `@labspangaea/ds-tokens/theme.css` preset** layer — the
 > "adopt Kanvo stack" choice, without re-authoring a working AA-critical system as utility soup.
 
 ## Release flow (per-component publishing)
@@ -75,14 +75,14 @@ npm run build          # build packages + the gallery (static)
 2. `npm run changeset` → declare which package(s) bumped + semver level + a changelog line.
 3. Merge to `main` → CI (`.github/workflows/release.yml`) opens a **"Version Packages"** PR that
    bumps **only the changed** packages + writes changelogs (Changesets).
-4. Merge that PR → CI **publishes only the changed packages** to GitHub Packages (`@pangaea`).
-5. Consumers pin a range (`"@pangaea/ds-button": "^1.2.0"`). A Renovate bump PR + the consumer's
+4. Merge that PR → CI **publishes only the changed packages** to GitHub Packages (`@labspangaea`).
+5. Consumers pin a range (`"@labspangaea/ds-button": "^1.2.0"`). A Renovate bump PR + the consumer's
    device-matrix CI gate it → auto-merge on green → redeploy. **Automatic, but gated** — never
    ungated-to-prod.
 
 ## How `pangaea.id` consumes it (later)
 
-`apps/labs` adds an `.npmrc` (`@pangaea:registry=…github`) + the `@pangaea/ds-*` deps it uses,
+`apps/labs` adds an `.npmrc` (`@labspangaea:registry=…github`) + the `@labspangaea/ds-*` deps it uses,
 imports them at **build time**, and `vite-react-ssg` prerenders them → HTML stays complete for
 crawlers, CSP stays clean, deploy stays static (the SEO-safe model). `revamp.css` is then
 progressively replaced (the `--rv-*` names are kept, so migration is mechanical).
@@ -126,5 +126,5 @@ component (arrays use a JSON object control, never string concat).
   on touch, a single ease-out `--rv-ease`, and a `prefers-reduced-motion` fallback on every animation.
 - **Zero drift:** every component is diffed against `revamp.css` property-by-property (light + dark +
   responsive + pseudo-states). Always check the live site before changing a component (see CLAUDE.md).
-- **Before first publish:** the repo is live on GitHub. Set the `@pangaea` GitHub Packages registry +
+- **Before first publish:** the repo is live on GitHub. Set the `@labspangaea` GitHub Packages registry +
   `NODE_AUTH_TOKEN` in CI, then `npm run changeset` for the initial `0.1.0` release.

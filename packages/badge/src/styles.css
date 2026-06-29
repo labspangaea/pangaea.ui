@@ -1,4 +1,4 @@
-/* @pangaea/ds-badge — mono uppercase pill. Uses --rv-* tokens. Variants ported
+/* @labspangaea/ds-badge — mono uppercase pill. Uses --rv-* tokens. Variants ported
    verbatim from the live site (.rv-chip--solid/--soon/--red/--free/--claude). */
 .rv-chip {
   display: inline-flex;

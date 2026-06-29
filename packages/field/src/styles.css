@@ -1,4 +1,4 @@
-/* @pangaea/ds-field — form fields. Uses --rv-* tokens. */
+/* @labspangaea/ds-field — form fields. Uses --rv-* tokens. */
 .rv-field {
   display: grid;
   gap: 7px;

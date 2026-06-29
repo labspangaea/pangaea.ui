@@ -1,4 +1,4 @@
-/* @pangaea/ds-section — layout primitives + heading scale. Uses --rv-* tokens. */
+/* @labspangaea/ds-section — layout primitives + heading scale. Uses --rv-* tokens. */
 .rv-container {
   width: 100%;
   max-width: var(--rv-maxw);

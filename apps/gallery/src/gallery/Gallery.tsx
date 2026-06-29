@@ -1,6 +1,6 @@
 import React from "react";
-import { Switch, LangToggle, ThemeToggle, type Lang } from "@pangaea/ds-toggle";
-import { CodeBlock } from "@pangaea/ds-code";
+import { Switch, LangToggle, ThemeToggle, type Lang } from "@labspangaea/ds-toggle";
+import { CodeBlock } from "@labspangaea/ds-code";
 import { STORIES, GROUPS, type Story, type Control } from "./stories";
 
 const TAG: Record<string, string> = {
@@ -17,7 +17,7 @@ const TAG: Record<string, string> = {
 };
 
 function usageOf(story: Story, args: Record<string, unknown>): string {
-  if (story.id === "tokens") return 'import "@pangaea/ds-tokens/tokens.css";';
+  if (story.id === "tokens") return 'import "@labspangaea/ds-tokens/tokens.css";';
   const tag = TAG[story.id] ?? story.name.replace(/\s+/g, "");
   const props = Object.entries(args)
     .map(([k, v]) => {

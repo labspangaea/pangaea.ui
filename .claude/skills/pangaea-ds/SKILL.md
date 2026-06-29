@@ -2,15 +2,15 @@
 name: pangaea-ds
 description: >-
   Workflow for building, auditing, and polishing components inside the pangaea.ui design-system repo
-  — the rv-* two-hex blue-on-white system shipped as @pangaea/ds-* packages with an Astro gallery.
-  Use this whenever you add or change a @pangaea/ds-* component, author or edit a gallery story in
+  — the rv-* two-hex blue-on-white system shipped as @labspangaea/ds-* packages with an Astro gallery.
+  Use this whenever you add or change a @labspangaea/ds-* component, author or edit a gallery story in
   apps/gallery, run a drift / audit / polish pass on the system, touch any packages/*/src/styles.css
   or packages/tokens/src/tokens.scss, or the work involves the --rv-* tokens, WCAG AA contrast, the
   JSON array controls, or the parallel-agent audit→polish→re-audit loop in this repo. It enforces
   what's easy to get wrong here: zero visual drift from pangaea.id's revamp.css, exhaustive gallery
   controls (arrays as JSON), accent-ink token discipline for AA, and the Emil-Kowalski motion
   conventions. Reach for it even when the user just says "add a component", "fix the styles", "audit
-  the gallery", or "make it match the site" — as long as they mean the @pangaea/ds-* packages or the
+  the gallery", or "make it match the site" — as long as they mean the @labspangaea/ds-* packages or the
   gallery. Do NOT use it for editing the live pangaea.id site itself (apps/labs marketing pages), for
   building a brand-new or unrelated design system, for the Kanvo gallery, or for generic
   CSS / contrast / Storybook / animation questions outside this repo.
@@ -19,7 +19,7 @@ description: >-
 # pangaea.ui design system
 
 This repo is a **faithful port** of pangaea.id's live `.rv-*` design system into independently
-versioned `@pangaea/ds-*` packages, catalogued by a Storybook-style Astro gallery. The whole value
+versioned `@labspangaea/ds-*` packages, catalogued by a Storybook-style Astro gallery. The whole value
 proposition is **zero visual drift from the live site** plus **WCAG AA in both themes**. Most
 mistakes here come from inventing values instead of porting them, or from skimping on the gallery
 controls. This skill is the playbook for not doing that.
@@ -55,8 +55,8 @@ Do these in order. The diff step is not optional; it's the whole point.
    `[data-rv-theme="dark"]` overrides, every `@media` breakpoint, and pseudo-states
    (`:hover` / `:active` / `:focus-visible`).
 2. **Scaffold the package.** `packages/<comp>/` with:
-   - `package.json`: `"name": "@pangaea/ds-<comp>"`, own `version`, `react`+`react-dom` as
-     **peerDependencies** (never deps), `"dependencies": { "@pangaea/ds-tokens": "*" }` if it uses
+   - `package.json`: `"name": "@labspangaea/ds-<comp>"`, own `version`, `react`+`react-dom` as
+     **peerDependencies** (never deps), `"dependencies": { "@labspangaea/ds-tokens": "*" }` if it uses
      tokens, ESM `exports` + `types`, `"sideEffects": ["*.css"]`,
      `"scripts": { "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css" }`.
    - `src/index.tsx`: peer-react component, explicit named exports (that barrel list is the future
@@ -143,7 +143,7 @@ overflow at 1440 / 768 / 390, ≥44px touch targets, controls reactive.
 
 ## Release & git
 
-Per-component publishing via Changesets → GitHub Packages (`@pangaea`); `npm run changeset` after a
+Per-component publishing via Changesets → GitHub Packages (`@labspangaea`); `npm run changeset` after a
 change. Pushing: origin is `labspangaea/pangaea.ui`, owned by the `gh` account **`labspangaea`** —
 a plain push as another account 403s. Use `gh auth switch --user labspangaea` then
 `git -c credential.helper='!gh auth git-credential' push`, then switch back. (Full detail in

@@ -1,4 +1,4 @@
-/* @pangaea/ds-points — numbered feature points. Ported from pangaea.id. */
+/* @labspangaea/ds-points — numbered feature points. Ported from pangaea.id. */
 .rv-points {
   display: grid;
   gap: clamp(16px, 2vw, 22px);

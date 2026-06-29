@@ -1,5 +1,5 @@
 {
-  "name": "@pangaea/ds-button",
+  "name": "@labspangaea/ds-button",
   "version": "0.1.0",
   "description": "Pangaea button — pill, three variants (primary/ghost/blue), press feedback. Renders <button> or <a href>.",
   "type": "module",
@@ -8,7 +8,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -18,7 +20,9 @@
     },
     "./styles.css": "./dist/styles.css"
   },
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -26,5 +30,10 @@
   "peerDependencies": {
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labspangaea/pangaea.ui.git",
+    "directory": "packages/button"
   }
 }

@@ -1,4 +1,4 @@
-/* @pangaea/ds-teamcard — matches pangaea.id `.rv-member` (navy avatar, name, role, bio). */
+/* @labspangaea/ds-teamcard — matches pangaea.id `.rv-member` (navy avatar, name, role, bio). */
 .rv-member {
   display: grid;
   gap: 10px;

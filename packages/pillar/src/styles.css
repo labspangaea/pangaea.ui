@@ -1,4 +1,4 @@
-/* @pangaea/ds-pillar — icon + heading + body + link, 3-up. Ported from pangaea.id. */
+/* @labspangaea/ds-pillar — icon + heading + body + link, 3-up. Ported from pangaea.id. */
 .rv-pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

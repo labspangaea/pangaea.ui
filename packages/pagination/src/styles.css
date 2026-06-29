@@ -1,4 +1,4 @@
-/* @pangaea/ds-pagination — prev/numbered/next. Uses --rv-* tokens. */
+/* @labspangaea/ds-pagination — prev/numbered/next. Uses --rv-* tokens. */
 .rv-pagination {
   display: inline-flex;
   flex-wrap: wrap;

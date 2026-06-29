@@ -1,4 +1,4 @@
-/* @pangaea/ds-progress — determinate / indeterminate bar. Uses --rv-* tokens.
+/* @labspangaea/ds-progress — determinate / indeterminate bar. Uses --rv-* tokens.
    Brand treatment mirrors the site's metric bar (.rv-bar): bg-tint track + an
    accent-ink→accent gradient fill. The determinate transition + indeterminate
    animation are net-new value-adds (the site bar has no animated state). */

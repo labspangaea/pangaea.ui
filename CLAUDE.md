@@ -1,7 +1,7 @@
 # CLAUDE.md — pangaea.ui
 
 The Pangaea design system: the `rv-*` two-hex blue-on-white system ported verbatim from
-[pangaea.id](https://www.pangaea.id), shipped as independently versioned `@pangaea/ds-*` packages
+[pangaea.id](https://www.pangaea.id), shipped as independently versioned `@labspangaea/ds-*` packages
 (tokens + 37 components) catalogued by a Storybook-style Astro gallery. Read `README.md` for the
 full topology and `PRODUCT.md` for the register/brand contract.
 
@@ -24,7 +24,7 @@ full topology and `PRODUCT.md` for the register/brand contract.
 
 ## Layout
 
-- `packages/tokens/` — `@pangaea/ds-tokens`. SCSS source (`src/tokens.scss`) → `dist/tokens.css` (CSS
+- `packages/tokens/` — `@labspangaea/ds-tokens`. SCSS source (`src/tokens.scss`) → `dist/tokens.css` (CSS
   vars, light + `[data-rv-theme="dark"] .rv-page` overrides) + `theme.css` (Tailwind v4 preset) +
   self-hosted fonts. **The palette source of truth.**
 - `packages/<comp>/` — one component each: `src/index.tsx` (peer-react) + `src/styles.css` (`.rv-*`
@@ -50,7 +50,7 @@ strips types **without** typechecking — implicit-`any` and type errors pass th
 ## Adding / changing a component
 
 1. Diff against the live `revamp.css` rule (non-negotiable #1).
-2. `packages/<comp>/`: `package.json` (`@pangaea/ds-<comp>`, peer-react, `exports`, `sideEffects:
+2. `packages/<comp>/`: `package.json` (`@labspangaea/ds-<comp>`, peer-react, `exports`, `sideEffects:
    ["*.css"]`), `src/index.tsx`, `src/styles.css`, `tsconfig.json`.
 3. Add a story in `stories.tsx` with **exhaustive** controls (JSON for arrays). Group it.
 4. Import its `styles.css` in `apps/gallery/src/styles/app.css`.
@@ -77,7 +77,7 @@ strips types **without** typechecking — implicit-`any` and type errors pass th
 
 ## Release & federation
 
-- Per-component publishing via Changesets → GitHub Packages (`@pangaea`). `npm run changeset` → merge
+- Per-component publishing via Changesets → GitHub Packages (`@labspangaea`). `npm run changeset` → merge
   → CI bumps + publishes only the changed packages. See `README.md` → Release flow.
 - Federation is **deferred but designed-for** (peer-react, isolated ESM, per-package CSS). Don't build
   MF machinery (YAGNI). Runtime MF is crawler-blind → never for the prerendered SEO pages.

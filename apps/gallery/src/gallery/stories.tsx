@@ -1,41 +1,41 @@
 import React from "react";
-import { Button } from "@pangaea/ds-button";
-import { Card } from "@pangaea/ds-card";
-import { Grid, heroAccent } from "@pangaea/ds-section";
-import { Chart } from "@pangaea/ds-chart";
-import { Navbar } from "@pangaea/ds-navbar";
-import { Badge } from "@pangaea/ds-badge";
-import { Callout } from "@pangaea/ds-callout";
-import { Quote } from "@pangaea/ds-quote";
-import { Field, Input, Textarea, Select, Checkbox, Radio } from "@pangaea/ds-field";
-import { Switch, LangToggle, ThemeToggle, type Lang } from "@pangaea/ds-toggle";
-import { Tabs } from "@pangaea/ds-tabs";
-import { Pagination, PaginationNav, LoadMore, PaginationDots } from "@pangaea/ds-pagination";
-import { Accordion, AccordionItem } from "@pangaea/ds-accordion";
-import { CodeBlock } from "@pangaea/ds-code";
-import { Tooltip } from "@pangaea/ds-tooltip";
-import { Modal } from "@pangaea/ds-modal";
-import { Progress } from "@pangaea/ds-progress";
-import { Avatar } from "@pangaea/ds-avatar";
-import { FileDropzone } from "@pangaea/ds-filedropzone";
-import { Hero } from "@pangaea/ds-hero";
-import { TestimonialCarousel } from "@pangaea/ds-testimonial";
-import { CtaBand } from "@pangaea/ds-cta";
-import { SocialIcons } from "@pangaea/ds-social";
-import { PricingTier } from "@pangaea/ds-pricing";
-import { Stepper } from "@pangaea/ds-stepper";
-import { TeamCard } from "@pangaea/ds-teamcard";
-import { LogoWall } from "@pangaea/ds-logowall";
-import { PluginCard } from "@pangaea/ds-plugincard";
-import { Stat, StatGrid } from "@pangaea/ds-stat";
-import { Pillar, PillarGrid } from "@pangaea/ds-pillar";
-import { Points, Point } from "@pangaea/ds-points";
-import { DoDont, Do, Dont } from "@pangaea/ds-dodont";
-import { Compare, Col } from "@pangaea/ds-compare";
-import { Checklist } from "@pangaea/ds-checklist";
-import { References, Ref, Cite } from "@pangaea/ds-references";
-import { Table } from "@pangaea/ds-table";
-import { ArchFlow } from "@pangaea/ds-archflow";
+import { Button } from "@labspangaea/ds-button";
+import { Card } from "@labspangaea/ds-card";
+import { Grid, heroAccent } from "@labspangaea/ds-section";
+import { Chart } from "@labspangaea/ds-chart";
+import { Navbar } from "@labspangaea/ds-navbar";
+import { Badge } from "@labspangaea/ds-badge";
+import { Callout } from "@labspangaea/ds-callout";
+import { Quote } from "@labspangaea/ds-quote";
+import { Field, Input, Textarea, Select, Checkbox, Radio } from "@labspangaea/ds-field";
+import { Switch, LangToggle, ThemeToggle, type Lang } from "@labspangaea/ds-toggle";
+import { Tabs } from "@labspangaea/ds-tabs";
+import { Pagination, PaginationNav, LoadMore, PaginationDots } from "@labspangaea/ds-pagination";
+import { Accordion, AccordionItem } from "@labspangaea/ds-accordion";
+import { CodeBlock } from "@labspangaea/ds-code";
+import { Tooltip } from "@labspangaea/ds-tooltip";
+import { Modal } from "@labspangaea/ds-modal";
+import { Progress } from "@labspangaea/ds-progress";
+import { Avatar } from "@labspangaea/ds-avatar";
+import { FileDropzone } from "@labspangaea/ds-filedropzone";
+import { Hero } from "@labspangaea/ds-hero";
+import { TestimonialCarousel } from "@labspangaea/ds-testimonial";
+import { CtaBand } from "@labspangaea/ds-cta";
+import { SocialIcons } from "@labspangaea/ds-social";
+import { PricingTier } from "@labspangaea/ds-pricing";
+import { Stepper } from "@labspangaea/ds-stepper";
+import { TeamCard } from "@labspangaea/ds-teamcard";
+import { LogoWall } from "@labspangaea/ds-logowall";
+import { PluginCard } from "@labspangaea/ds-plugincard";
+import { Stat, StatGrid } from "@labspangaea/ds-stat";
+import { Pillar, PillarGrid } from "@labspangaea/ds-pillar";
+import { Points, Point } from "@labspangaea/ds-points";
+import { DoDont, Do, Dont } from "@labspangaea/ds-dodont";
+import { Compare, Col } from "@labspangaea/ds-compare";
+import { Checklist } from "@labspangaea/ds-checklist";
+import { References, Ref, Cite } from "@labspangaea/ds-references";
+import { Table } from "@labspangaea/ds-table";
+import { ArchFlow } from "@labspangaea/ds-archflow";
 
 export type Control =
   | { kind: "text"; label: string; def: string }
@@ -160,7 +160,7 @@ export const STORIES: Story[] = [
     id: "tokens",
     name: "Tokens",
     group: "Foundations",
-    pkg: "@pangaea/ds-tokens",
+    pkg: "@labspangaea/ds-tokens",
     notes: "Two brand hex only; everything else is a tint/luminance/alpha. Dual-theme. Display only.",
     render: () => (
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 14, width: "100%", maxWidth: 720 }}>
@@ -181,7 +181,7 @@ export const STORIES: Story[] = [
     id: "typography",
     name: "Typography",
     group: "Foundations",
-    pkg: "@pangaea/ds-section · ds-tokens",
+    pkg: "@labspangaea/ds-section · ds-tokens",
     controls: {
       sample: { kind: "text", label: "display sample", def: "Engineered, not shouted" },
       headline: { kind: "text", label: "section headline", def: "Section headline" },
@@ -210,7 +210,7 @@ export const STORIES: Story[] = [
     id: "button",
     name: "Button",
     group: "Actions",
-    pkg: "@pangaea/ds-button",
+    pkg: "@labspangaea/ds-button",
     controls: {
       variant: { kind: "select", label: "variant", options: ["primary", "ghost", "blue"], def: "primary" },
       label: { kind: "text", label: "label", def: "Book an audit" },
@@ -228,7 +228,7 @@ export const STORIES: Story[] = [
     id: "toggle",
     name: "Toggle",
     group: "Actions",
-    pkg: "@pangaea/ds-toggle",
+    pkg: "@labspangaea/ds-toggle",
     notes: "Pick a type: switch · lang (EN/ID) · theme (light/dark). label/disabled apply to the switch.",
     controls: {
       type: { kind: "select", label: "type", options: ["switch", "lang", "theme"], def: "switch" },
@@ -241,7 +241,7 @@ export const STORIES: Story[] = [
     id: "pagination",
     name: "Pagination",
     group: "Actions",
-    pkg: "@pangaea/ds-pagination",
+    pkg: "@labspangaea/ds-pagination",
     notes: "Pick a type: numbered (windowed) · Newer/Older URL pager · Load more · Dots.",
     controls: {
       type: { kind: "select", label: "type", options: ["numbered", "newer-older", "load-more", "dots"], def: "numbered" },
@@ -274,7 +274,7 @@ export const STORIES: Story[] = [
     id: "field",
     name: "Form field",
     group: "Inputs",
-    pkg: "@pangaea/ds-field",
+    pkg: "@labspangaea/ds-field",
     controls: {
       type: { kind: "select", label: "type", options: ["text", "email", "password", "number", "search", "tel", "url", "date"], def: "email" },
       label: { kind: "text", label: "label", def: "Email" },
@@ -321,7 +321,7 @@ export const STORIES: Story[] = [
     id: "filedropzone",
     name: "File dropzone",
     group: "Inputs",
-    pkg: "@pangaea/ds-filedropzone",
+    pkg: "@labspangaea/ds-filedropzone",
     controls: {
       hint: { kind: "text", label: "hint", def: "PNG, SVG, PDF — up to 10MB" },
       accept: { kind: "text", label: "accept", def: "image/*,.pdf" },
@@ -339,7 +339,7 @@ export const STORIES: Story[] = [
     id: "badge",
     name: "Badge",
     group: "Data display",
-    pkg: "@pangaea/ds-badge",
+    pkg: "@labspangaea/ds-badge",
     controls: {
       variant: { kind: "select", label: "variant", options: ["accent", "solid", "soon", "red", "free", "claude"], def: "accent" },
       label: { kind: "text", label: "label", def: "Eval-gated" },
@@ -350,7 +350,7 @@ export const STORIES: Story[] = [
     id: "avatar",
     name: "Avatar",
     group: "Data display",
-    pkg: "@pangaea/ds-avatar",
+    pkg: "@labspangaea/ds-avatar",
     controls: {
       name: { kind: "text", label: "name", def: "Harry Osmar" },
       size: { kind: "select", label: "size", options: ["sm", "md", "lg"], def: "md" },
@@ -363,7 +363,7 @@ export const STORIES: Story[] = [
     id: "card",
     name: "Card",
     group: "Data display",
-    pkg: "@pangaea/ds-card",
+    pkg: "@labspangaea/ds-card",
     controls: {
       featured: { kind: "bool", label: "featured", def: false },
       title: { kind: "text", label: "title", def: "Eval-gated" },
@@ -382,7 +382,7 @@ export const STORIES: Story[] = [
     id: "progress",
     name: "Progress",
     group: "Data display",
-    pkg: "@pangaea/ds-progress",
+    pkg: "@labspangaea/ds-progress",
     controls: {
       value: { kind: "number", label: "value", def: 64, min: 0, max: 100 },
       max: { kind: "number", label: "max", def: 100, min: 1, max: 200 },
@@ -399,7 +399,7 @@ export const STORIES: Story[] = [
     id: "social",
     name: "Social icons",
     group: "Data display",
-    pkg: "@pangaea/ds-social",
+    pkg: "@labspangaea/ds-social",
     notes: "links: JSON array of { platform, href } — the real pangaea.id footer URLs by default. Platforms: github / linkedin / youtube / instagram / tiktok.",
     controls: {
       size: { kind: "select", label: "size", options: ["sm", "md", "lg"], def: "md" },
@@ -409,8 +409,8 @@ export const STORIES: Story[] = [
         def: [
           { platform: "linkedin", href: "https://www.linkedin.com/company/pangaealabs" },
           { platform: "instagram", href: "https://www.instagram.com/pangaeadigitallabs" },
-          { platform: "youtube", href: "https://www.youtube.com/@pangaealabs" },
-          { platform: "tiktok", href: "https://www.tiktok.com/@pangaea.labs" },
+          { platform: "youtube", href: "https://www.youtube.com/@labspangaealabs" },
+          { platform: "tiktok", href: "https://www.tiktok.com/@labspangaea.labs" },
         ],
       },
     },
@@ -420,7 +420,7 @@ export const STORIES: Story[] = [
     id: "plugincard",
     name: "Plugin card",
     group: "Data display",
-    pkg: "@pangaea/ds-plugincard",
+    pkg: "@labspangaea/ds-plugincard",
     controls: {
       name: { kind: "text", label: "name", def: "Slack" },
       description: { kind: "text", label: "description", def: "Pipe eval alerts + lead notifications into a channel." },
@@ -450,7 +450,7 @@ export const STORIES: Story[] = [
     id: "quote",
     name: "Quote",
     group: "Data display",
-    pkg: "@pangaea/ds-quote",
+    pkg: "@labspangaea/ds-quote",
     controls: {
       pull: { kind: "bool", label: "pull", def: true },
       text: { kind: "text", label: "text", def: "Finally, people who treat this like engineering." },
@@ -468,7 +468,7 @@ export const STORIES: Story[] = [
     id: "code",
     name: "Code block",
     group: "Data display",
-    pkg: "@pangaea/ds-code",
+    pkg: "@labspangaea/ds-code",
     controls: {
       lang: { kind: "text", label: "lang", def: "bash" },
       code: { kind: "text", label: "code", def: "npm run build:pkgs" },
@@ -488,7 +488,7 @@ export const STORIES: Story[] = [
     id: "chart",
     name: "Chart",
     group: "Data display",
-    pkg: "@pangaea/ds-chart",
+    pkg: "@labspangaea/ds-chart",
     notes: "data is a Chart.js dataset; labels + values are JSON arrays.",
     controls: {
       type: { kind: "select", label: "type", options: ["bar", "line", "doughnut"], def: "bar" },
@@ -512,7 +512,7 @@ export const STORIES: Story[] = [
     id: "callout",
     name: "Callout",
     group: "Feedback",
-    pkg: "@pangaea/ds-callout",
+    pkg: "@labspangaea/ds-callout",
     controls: {
       variant: { kind: "select", label: "variant", options: ["note", "tip", "caveat", "warning", "rule"], def: "note" },
       title: { kind: "text", label: "title", def: "Note" },
@@ -531,7 +531,7 @@ export const STORIES: Story[] = [
     id: "tooltip",
     name: "Tooltip",
     group: "Feedback",
-    pkg: "@pangaea/ds-tooltip",
+    pkg: "@labspangaea/ds-tooltip",
     controls: {
       placement: { kind: "select", label: "placement", options: ["top", "bottom", "left", "right"], def: "top" },
       label: { kind: "text", label: "label", def: "Eval-gated" },
@@ -547,7 +547,7 @@ export const STORIES: Story[] = [
     id: "modal",
     name: "Modal",
     group: "Feedback",
-    pkg: "@pangaea/ds-modal",
+    pkg: "@labspangaea/ds-modal",
     controls: {
       title: { kind: "text", label: "title", def: "Book an Adopt Assessment" },
       body: { kind: "text", label: "body", def: "Native <dialog> — Esc closes, backdrop click dismisses, focus trapped." },
@@ -561,7 +561,7 @@ export const STORIES: Story[] = [
     id: "navbar",
     name: "Navbar",
     group: "Navigation",
-    pkg: "@pangaea/ds-navbar",
+    pkg: "@labspangaea/ds-navbar",
     notes: "links: JSON array of labels; activeIndex marks which one is current (0-based).",
     controls: {
       brand: { kind: "text", label: "brand", def: "PangaeaLabs" },
@@ -586,7 +586,7 @@ export const STORIES: Story[] = [
     id: "tabs",
     name: "Tabs",
     group: "Navigation",
-    pkg: "@pangaea/ds-tabs",
+    pkg: "@labspangaea/ds-tabs",
     notes: "items: JSON array of { label, content }; id is slugged from the label. defaultIndex selects the open tab.",
     controls: {
       items: {
@@ -623,7 +623,7 @@ export const STORIES: Story[] = [
     id: "accordion",
     name: "Accordion",
     group: "Navigation",
-    pkg: "@pangaea/ds-accordion",
+    pkg: "@labspangaea/ds-accordion",
     notes: "items: JSON array of { question, answer }.",
     controls: {
       single: { kind: "bool", label: "single-open", def: true },
@@ -662,7 +662,7 @@ export const STORIES: Story[] = [
     id: "stepper",
     name: "Stepper / timeline",
     group: "Navigation",
-    pkg: "@pangaea/ds-stepper",
+    pkg: "@labspangaea/ds-stepper",
     notes: 'The /dev "How we guarantee quality" pattern. steps: JSON array of { label, description? }; status derives from "active step".',
     controls: {
       orientation: { kind: "select", label: "orientation", options: ["horizontal", "vertical"], def: "horizontal" },
@@ -686,7 +686,7 @@ export const STORIES: Story[] = [
     id: "hero",
     name: "Hero",
     group: "Sections",
-    pkg: "@pangaea/ds-hero",
+    pkg: "@labspangaea/ds-hero",
     notes: "Toggle EN/ID in the toolbar — the action labels localize.",
     controls: {
       kicker: { kind: "text", label: "kicker", def: "BUILD track" },
@@ -731,7 +731,7 @@ export const STORIES: Story[] = [
     id: "cta",
     name: "CTA Band",
     group: "Sections",
-    pkg: "@pangaea/ds-cta",
+    pkg: "@labspangaea/ds-cta",
     notes: "Toggle EN/ID in the toolbar — the action labels localize.",
     controls: {
       title: { kind: "text", label: "title", def: "Ready to see it work?" },
@@ -761,7 +761,7 @@ export const STORIES: Story[] = [
     id: "pricing",
     name: "Pricing tier",
     group: "Sections",
-    pkg: "@pangaea/ds-pricing",
+    pkg: "@labspangaea/ds-pricing",
     controls: {
       name: { kind: "text", label: "name", def: "Adopt" },
       price: { kind: "text", label: "price", def: "from $12k" },
@@ -795,7 +795,7 @@ export const STORIES: Story[] = [
     id: "teamcard",
     name: "Team card",
     group: "Sections",
-    pkg: "@pangaea/ds-teamcard",
+    pkg: "@labspangaea/ds-teamcard",
     controls: {
       name: { kind: "text", label: "name", def: "Harry Osmar" },
       role: { kind: "text", label: "role", def: "Founder · Engineering" },
@@ -821,7 +821,7 @@ export const STORIES: Story[] = [
     id: "logowall",
     name: "Logo wall",
     group: "Sections",
-    pkg: "@pangaea/ds-logowall",
+    pkg: "@labspangaea/ds-logowall",
     notes: "logos: JSON array of { name, src? } (src = optional logo image URL).",
     controls: {
       label: { kind: "text", label: "label", def: "Trusted by teams shipping to production" },
@@ -844,7 +844,7 @@ export const STORIES: Story[] = [
     id: "testimonial",
     name: "Testimonial",
     group: "Sections",
-    pkg: "@pangaea/ds-testimonial",
+    pkg: "@labspangaea/ds-testimonial",
     notes: "items: JSON array of { quote, author, role? }.",
     controls: {
       interval: { kind: "number", label: "interval (ms)", def: 6000, min: 0, max: 12000 },
@@ -872,7 +872,7 @@ export const STORIES: Story[] = [
     id: "layout",
     name: "Layout grid",
     group: "Sections",
-    pkg: "@pangaea/ds-section",
+    pkg: "@labspangaea/ds-section",
     controls: { cols: { kind: "select", label: "cols", options: ["2", "3", "4"], def: "4" } },
     render: (a) => (
       <div style={{ width: "100%" }}>
@@ -892,7 +892,7 @@ export const STORIES: Story[] = [
     id: "stat",
     name: "Stat",
     group: "Data display",
-    pkg: "@pangaea/ds-stat",
+    pkg: "@labspangaea/ds-stat",
     notes: "Big-number stat; pct adds a progress bar (the metric variant); icon adds a chip. stats: JSON array of { value, label, pct }.",
     controls: {
       stats: {
@@ -934,7 +934,7 @@ export const STORIES: Story[] = [
     id: "checklist",
     name: "Checklist",
     group: "Data display",
-    pkg: "@pangaea/ds-checklist",
+    pkg: "@labspangaea/ds-checklist",
     controls: {
       items: {
         kind: "json",
@@ -952,7 +952,7 @@ export const STORIES: Story[] = [
     id: "table",
     name: "Table",
     group: "Data display",
-    pkg: "@pangaea/ds-table",
+    pkg: "@labspangaea/ds-table",
     notes: "Responsive hairline table (scroll-wrapped). headers + rows are JSON.",
     controls: {
       headers: { kind: "json", label: "headers", def: ["Engagement", "Outcome", "Owned"] },
@@ -997,7 +997,7 @@ export const STORIES: Story[] = [
     id: "pillar",
     name: "Pillar",
     group: "Sections",
-    pkg: "@pangaea/ds-pillar",
+    pkg: "@labspangaea/ds-pillar",
     notes: "pillars: JSON array of { title, body }. icon/link inject the example icon + 'Learn more →' link.",
     controls: {
       pillars: {
@@ -1039,7 +1039,7 @@ export const STORIES: Story[] = [
     id: "points",
     name: "Points",
     group: "Sections",
-    pkg: "@pangaea/ds-points",
+    pkg: "@labspangaea/ds-points",
     notes: "items: JSON array of { n, title, desc }. n is the optional index marker.",
     controls: {
       cols: { kind: "select", label: "cols", options: ["2", "3"], def: "3" },
@@ -1070,7 +1070,7 @@ export const STORIES: Story[] = [
     id: "dodont",
     name: "Do / Don't",
     group: "Content",
-    pkg: "@pangaea/ds-dodont",
+    pkg: "@labspangaea/ds-dodont",
     controls: {
       doTitle: { kind: "text", label: "do title", def: "Do" },
       doText: { kind: "text", label: "do text", def: "Eval-gate every release with named metrics." },
@@ -1094,7 +1094,7 @@ export const STORIES: Story[] = [
     id: "compare",
     name: "Compare",
     group: "Content",
-    pkg: "@pangaea/ds-compare",
+    pkg: "@labspangaea/ds-compare",
     notes: "cols: JSON array of { label, body, good? }. good:true highlights that column blue (tone='good').",
     controls: {
       cols: {
@@ -1125,7 +1125,7 @@ export const STORIES: Story[] = [
     id: "references",
     name: "References",
     group: "Content",
-    pkg: "@pangaea/ds-references",
+    pkg: "@labspangaea/ds-references",
     notes: "intro = lead sentence; cites = inline <Cite> links after it; refs = the numbered <Ref> Sources list. cites + refs are { text, href } JSON arrays.",
     controls: {
       heading: { kind: "text", label: "heading", def: "Sources" },
@@ -1177,7 +1177,7 @@ export const STORIES: Story[] = [
     id: "archflow",
     name: "Arch flow",
     group: "Content",
-    pkg: "@pangaea/ds-archflow",
+    pkg: "@labspangaea/ds-archflow",
     controls: {
       steps: { kind: "json", label: "steps", def: ["Query", "Retrieve", "Rerank", "Generate", "Eval gate"] },
       caption: { kind: "text", label: "caption", def: "The RAG pipeline — eval-gated before it answers." },

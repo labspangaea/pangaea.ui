@@ -1,4 +1,4 @@
-/* @pangaea/ds-navbar — sticky top site nav + mobile sheet. Uses --rv-* tokens. */
+/* @labspangaea/ds-navbar — sticky top site nav + mobile sheet. Uses --rv-* tokens. */
 .rv-nav {
   position: sticky;
   top: 0;

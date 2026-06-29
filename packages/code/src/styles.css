@@ -1,4 +1,4 @@
-/* @pangaea/ds-code — styled code panel + copy bar + hljs theme. Uses --rv-* tokens. */
+/* @labspangaea/ds-code — styled code panel + copy bar + hljs theme. Uses --rv-* tokens. */
 .rv-code {
   margin: 22px 0;
   border: 1px solid var(--rv-line);

@@ -1,4 +1,4 @@
-/* @pangaea/ds-plugincard — integration card. Uses --rv-* tokens. */
+/* @labspangaea/ds-plugincard — integration card. Uses --rv-* tokens. */
 .rv-plugincard {
   display: grid;
   gap: 10px;

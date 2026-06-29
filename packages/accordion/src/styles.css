@@ -1,4 +1,4 @@
-/* @pangaea/ds-accordion — native <details>, animated plus/minus. Uses --rv-* tokens. */
+/* @labspangaea/ds-accordion — native <details>, animated plus/minus. Uses --rv-* tokens. */
 .rv-acc {
   display: grid;
   gap: 28px;

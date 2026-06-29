@@ -1,4 +1,4 @@
-/* @pangaea/ds-tooltip — CSS hover/focus tooltip, 4 placements. Uses --rv-* tokens. */
+/* @labspangaea/ds-tooltip — CSS hover/focus tooltip, 4 placements. Uses --rv-* tokens. */
 .rv-tooltip {
   position: relative;
   display: inline-flex;

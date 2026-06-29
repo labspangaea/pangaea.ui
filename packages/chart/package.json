@@ -1,5 +1,5 @@
 {
-  "name": "@pangaea/ds-chart",
+  "name": "@labspangaea/ds-chart",
   "version": "0.1.0",
   "description": "Pangaea chart — a thin Chart.js wrapper that reads brand colors from the live --rv-* CSS variables, so charts follow the light/dark theme.",
   "type": "module",
@@ -8,7 +8,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -29,5 +31,10 @@
   },
   "devDependencies": {
     "chart.js": "^4.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labspangaea/pangaea.ui.git",
+    "directory": "packages/chart"
   }
 }

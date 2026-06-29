@@ -1,4 +1,4 @@
-/* @pangaea/ds-filedropzone — drag-and-drop upload area. Uses --rv-* tokens. */
+/* @labspangaea/ds-filedropzone — drag-and-drop upload area. Uses --rv-* tokens. */
 .rv-dropzone {
   display: grid;
   justify-items: center;

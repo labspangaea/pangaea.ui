@@ -1,4 +1,4 @@
-/* @pangaea/ds-callout — icon + tinted panel. Semantic status hues (the sanctioned
+/* @labspangaea/ds-callout — icon + tinted panel. Semantic status hues (the sanctioned
    exception to the two-hex rule); everything else is --rv-* tokens. No side-stripe. */
 .rv-callout {
   display: flex;

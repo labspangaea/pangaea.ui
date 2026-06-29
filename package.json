@@ -2,7 +2,7 @@
   "name": "pangaea-ui",
   "private": true,
   "version": "0.0.0",
-  "description": "Pangaea design system — per-component versioned packages (@pangaea/ds-*) + an Astro component gallery. Tokens ported verbatim from pangaea.id (DESIGN.md: two-hex blue-on-white, dual-theme). Structured so any component can be deployed as a federated remote later (peer-react, isolated ESM, separate tokens) — but no federation machinery is built yet.",
+  "description": "Pangaea design system — per-component versioned packages (@labspangaea/ds-*) + an Astro component gallery. Tokens ported verbatim from pangaea.id (DESIGN.md: two-hex blue-on-white, dual-theme). Structured so any component can be deployed as a federated remote later (peer-react, isolated ESM, separate tokens) — but no federation machinery is built yet.",
   "type": "module",
   "workspaces": [
     "packages/*",
@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "build:pkgs": "for d in packages/*; do npm run build -w \"$d\" --if-present; done",
-    "build": "npm run build:pkgs && npm run build -w @pangaea/gallery",
-    "dev": "npm run build:pkgs && npm run dev -w @pangaea/gallery",
-    "gallery": "npm run dev -w @pangaea/gallery",
+    "build": "npm run build:pkgs && npm run build -w @labspangaea/gallery",
+    "dev": "npm run build:pkgs && npm run dev -w @labspangaea/gallery",
+    "gallery": "npm run dev -w @labspangaea/gallery",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "changeset": "changeset",
     "version-packages": "changeset version",

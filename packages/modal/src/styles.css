@@ -1,4 +1,4 @@
-/* @pangaea/ds-modal — native <dialog>, centered card, soft backdrop. Uses --rv-* tokens. */
+/* @labspangaea/ds-modal — native <dialog>, centered card, soft backdrop. Uses --rv-* tokens. */
 .rv-modal {
   /* Explicitly centre — don't rely on the UA `dialog { margin:auto }`, which CSS
      resets (e.g. Tailwind preflight) zero out, dropping the modal to top-left. */

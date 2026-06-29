@@ -1,4 +1,4 @@
-/* @pangaea/ds-avatar — image or initials, sizes, status dot. Uses --rv-* tokens. */
+/* @labspangaea/ds-avatar — image or initials, sizes, status dot. Uses --rv-* tokens. */
 .rv-avatar {
   position: relative;
   display: inline-grid;

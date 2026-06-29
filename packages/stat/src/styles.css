@@ -1,4 +1,4 @@
-/* @pangaea/ds-stat — big-number stat + metric (value/label/bar). Ported from pangaea.id. */
+/* @labspangaea/ds-stat — big-number stat + metric (value/label/bar). Ported from pangaea.id. */
 .rv-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

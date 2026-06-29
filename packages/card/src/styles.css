@@ -1,4 +1,4 @@
-/* @pangaea/ds-card — white surface, hairline border, soft navy-tinted shadow, hover lift.
+/* @labspangaea/ds-card — white surface, hairline border, soft navy-tinted shadow, hover lift.
    Uses --rv-* tokens (render inside a .rv-page ancestor). */
 .rv-card {
   background: var(--rv-bg);

@@ -1,7 +1,7 @@
 name: Release
 
 # Per-component publishing: a "Version Packages" PR is opened when changesets land
-# on main; merging it bumps ONLY the changed @pangaea/ds-* packages and publishes
+# on main; merging it bumps ONLY the changed @labspangaea/ds-* packages and publishes
 # them to GitHub Packages. The gallery is ignored (changeset config).
 on:
   push:

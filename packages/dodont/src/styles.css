@@ -1,4 +1,4 @@
-/* @pangaea/ds-dodont — green/red guidance pair. Ported from pangaea.id.
+/* @labspangaea/ds-dodont — green/red guidance pair. Ported from pangaea.id.
    Semantic status hues (the sanctioned exception to the two-hex rule). */
 .rv-dodont {
   display: grid;

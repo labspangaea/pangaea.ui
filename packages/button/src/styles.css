@@ -1,5 +1,5 @@
-/* @pangaea/ds-button — pill button, 3 variants, press feedback. Uses --rv-* tokens
-   from @pangaea/ds-tokens (must render inside a .rv-page ancestor). */
+/* @labspangaea/ds-button — pill button, 3 variants, press feedback. Uses --rv-* tokens
+   from @labspangaea/ds-tokens (must render inside a .rv-page ancestor). */
 .rv-btn {
   display: inline-flex;
   align-items: center;

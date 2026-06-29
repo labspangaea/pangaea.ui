@@ -1,4 +1,4 @@
-/* @pangaea/ds-compare — neutral side-by-side columns. Ported from pangaea.id. */
+/* @labspangaea/ds-compare — neutral side-by-side columns. Ported from pangaea.id. */
 .rv-compare {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

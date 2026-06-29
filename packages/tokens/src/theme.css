@@ -1,6 +1,6 @@
 /* Pangaea Tailwind v4 preset — maps the brand --rv-x tokens to Tailwind theme
    namespaces, so consumers who use utilities get brand-correct bg, text, and border
-   colors plus fonts. Import AFTER the tailwindcss import. The @pangaea/ds-* components
+   colors plus fonts. Import AFTER the tailwindcss import. The @labspangaea/ds-* components
    ship their own CSS off the --rv-x vars, so this preset is optional sugar for layout. */
 @theme {
   --color-bg: var(--rv-bg);

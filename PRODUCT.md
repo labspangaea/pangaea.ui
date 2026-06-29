@@ -1,7 +1,7 @@
 # PRODUCT.md — pangaea.ui
 
 **What it is.** The Pangaea design system: the two-hex blue-on-white `rv-*` system ported verbatim
-from pangaea.id, shipped as independently versioned `@pangaea/ds-*` packages, catalogued by an
+from pangaea.id, shipped as independently versioned `@labspangaea/ds-*` packages, catalogued by an
 Astro **gallery** — a 3-pane Storybook-style component explorer (left menu · center live canvas ·
 right Controls + copyable Usage + Info).
 
@@ -20,7 +20,7 @@ usage-snippet generator) + `src/gallery/stories.tsx` (the story registry) + `src
   (never plain `#3FA9F5` for text on white — fails AA).
 - Surfaces `#FFFFFF` / `#F4F8FD` / `#EAF3FD`; ink `#203150` / `#46566F` / `#5F6E88`.
 - Dual theme via `[data-rv-theme="dark"] .rv-page`. All component CSS is driven by `--rv-*` tokens
-  from `@pangaea/ds-tokens`.
+  from `@labspangaea/ds-tokens`.
 - Type: Clash Display (display) / Geist (body) / Geist Mono.
 
 **Non-negotiables.**

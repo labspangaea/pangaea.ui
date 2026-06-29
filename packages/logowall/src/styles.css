@@ -1,4 +1,4 @@
-/* @pangaea/ds-logowall — matches pangaea.id `.rv-trusted` logo strip. */
+/* @labspangaea/ds-logowall — matches pangaea.id `.rv-trusted` logo strip. */
 .rv-trusted {
   display: grid;
   gap: 22px;

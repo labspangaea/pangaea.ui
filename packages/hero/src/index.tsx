@@ -4,7 +4,7 @@ const cx = (...c: Array<string | false | undefined>) => c.filter(Boolean).join("
 
 export interface HeroProps {
   kicker?: React.ReactNode;
-  /** Pass plain text, or heroAccent(title, word) from @pangaea/ds-section for one blue word. */
+  /** Pass plain text, or heroAccent(title, word) from @labspangaea/ds-section for one blue word. */
   title: React.ReactNode;
   lead?: React.ReactNode;
   /** CTA buttons. */

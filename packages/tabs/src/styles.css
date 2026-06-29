@@ -1,4 +1,4 @@
-/* @pangaea/ds-tabs — tablist + panels. Uses --rv-* tokens. */
+/* @labspangaea/ds-tabs — tablist + panels. Uses --rv-* tokens. */
 .rv-tablist {
   display: flex;
   flex-wrap: wrap;
