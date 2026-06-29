@@ -1,0 +1,83 @@
+/* @pangaea/ds-stat — big-number stat + metric (value/label/bar). Ported from pangaea.id. */
+.rv-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  max-width: 760px;
+}
+@media (max-width: 980px) {
+  .rv-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.rv-stat .rv-stat-v {
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--rv-ink);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.rv-stat .rv-stat-k {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--rv-ink-2);
+}
+
+/* metric variant — folds the `.rv-card` surface in (the site uses `.rv-card.rv-metric`)
+   so the metric is self-contained, hover lift included for parity. */
+.rv-metric {
+  display: grid;
+  gap: 10px;
+  background: var(--rv-bg);
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r);
+  box-shadow: var(--rv-sh-sm);
+  padding: clamp(20px, 2.4vw, 28px);
+  transition: transform 0.2s var(--rv-ease), box-shadow 0.2s var(--rv-ease),
+    border-color 0.2s var(--rv-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rv-metric:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--rv-sh-md);
+    border-color: var(--rv-line-2);
+  }
+}
+.rv-metric-ico {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+}
+.rv-metric-ico svg {
+  width: 19px;
+  height: 19px;
+}
+.rv-metric .rv-metric-v {
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  color: var(--rv-ink);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.rv-metric .rv-metric-k {
+  font-size: 0.9rem;
+  color: var(--rv-ink-2);
+}
+.rv-bar {
+  height: 6px;
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-bg-tint);
+  overflow: hidden;
+}
+.rv-bar > i {
+  display: block;
+  height: 100%;
+  border-radius: var(--rv-r-pill);
+  background: linear-gradient(90deg, var(--rv-accent-ink), var(--rv-accent));
+}

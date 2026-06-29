@@ -1,0 +1,104 @@
+/* @pangaea/ds-pricing — tier card. Verbatim from pangaea.id `.rv-tier`
+   (card surface folded in, since the site composes .rv-card.rv-tier). */
+.rv-tiers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 920px;
+  width: 100%;
+}
+.rv-tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  background: var(--rv-bg);
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r);
+  box-shadow: var(--rv-sh-sm);
+  padding: clamp(20px, 2.4vw, 28px);
+  /* the site tier is a .rv-card, so it carries the card lift on hover */
+  transition: transform 0.2s var(--rv-ease), box-shadow 0.2s var(--rv-ease),
+    border-color 0.2s var(--rv-ease);
+}
+.rv-tier:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rv-sh-md);
+  border-color: var(--rv-line-2);
+}
+/* ordered after :hover so the featured ring + accent border survive a hover
+   (same source-order win the live site relies on), while still lifting */
+.rv-tier.featured {
+  border-color: var(--rv-accent);
+  box-shadow: 0 0 0 1px var(--rv-accent), var(--rv-sh-md);
+}
+.rv-tier-feat-tag {
+  position: absolute;
+  top: -12px;
+  left: clamp(20px, 2.4vw, 28px);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34em 0.8em;
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+  font-family: var(--rv-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rv-tier-name {
+  font-family: var(--rv-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rv-ink-3);
+}
+.rv-tier-price {
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.9rem;
+  color: var(--rv-ink);
+  line-height: 1;
+}
+.rv-tier-price span {
+  font-family: var(--rv-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--rv-ink-3);
+}
+.rv-tier-for {
+  font-size: 0.94rem;
+  color: var(--rv-ink-2);
+  margin: 0;
+}
+.rv-tier ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 4px 0 6px;
+  padding: 0;
+}
+.rv-tier li {
+  display: flex;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--rv-ink-2);
+}
+.rv-tier li .rv-tick {
+  color: var(--rv-accent-ink);
+  font-weight: 700;
+  flex: none;
+}
+.rv-tier .rv-btn {
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+}
+@media (max-width: 760px) {
+  .rv-tiers {
+    grid-template-columns: 1fr;
+  }
+}

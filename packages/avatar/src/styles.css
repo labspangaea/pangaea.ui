@@ -1,0 +1,59 @@
+/* @pangaea/ds-avatar — image or initials, sizes, status dot. Uses --rv-* tokens. */
+.rv-avatar {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  overflow: visible;
+  background: var(--rv-brand);
+  color: #fff;
+  font-family: var(--rv-mono);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  user-select: none;
+}
+.rv-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.rv-avatar-initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+.rv-avatar--sm {
+  width: 32px;
+  height: 32px;
+  font-size: 0.72rem;
+}
+.rv-avatar--md {
+  width: 44px;
+  height: 44px;
+  font-size: 0.95rem;
+}
+.rv-avatar--lg {
+  width: 64px;
+  height: 64px;
+  font-size: 1.4rem;
+}
+.rv-avatar-dot {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 30%;
+  height: 30%;
+  min-width: 9px;
+  min-height: 9px;
+  border-radius: 50%;
+  border: 2px solid var(--rv-bg);
+}
+.rv-avatar-dot--online {
+  background: #1a8f5a;
+}
+.rv-avatar-dot--offline {
+  background: var(--rv-ink-3);
+}

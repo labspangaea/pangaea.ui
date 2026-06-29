@@ -1,0 +1,36 @@
+/* @pangaea/ds-progress — determinate / indeterminate bar. Uses --rv-* tokens.
+   Brand treatment mirrors the site's metric bar (.rv-bar): bg-tint track + an
+   accent-ink→accent gradient fill. The determinate transition + indeterminate
+   animation are net-new value-adds (the site bar has no animated state). */
+.rv-progress {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-bg-tint);
+  overflow: hidden;
+}
+.rv-progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--rv-accent-ink), var(--rv-accent));
+  transition: width 0.3s var(--rv-ease);
+}
+.rv-progress--indet .rv-progress-bar {
+  width: 40%;
+  animation: rv-progress-indet 1.2s var(--rv-ease) infinite;
+}
+@keyframes rv-progress-indet {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-progress--indet .rv-progress-bar {
+    animation: none;
+    width: 100%;
+    opacity: 0.6;
+  }
+}

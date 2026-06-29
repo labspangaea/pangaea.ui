@@ -1,0 +1,65 @@
+/* @pangaea/ds-plugincard — integration card. Uses --rv-* tokens. */
+.rv-plugincard {
+  display: grid;
+  gap: 10px;
+  background: var(--rv-bg);
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r);
+  box-shadow: var(--rv-sh-sm);
+  padding: clamp(18px, 2.2vw, 24px);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s var(--rv-ease), box-shadow 0.2s var(--rv-ease), border-color 0.2s var(--rv-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  a.rv-plugincard:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--rv-sh-md);
+    border-color: var(--rv-line-2);
+  }
+}
+.rv-plugincard-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.rv-plugincard-icon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.rv-plugincard-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.rv-plugincard-name {
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--rv-ink);
+}
+.rv-plugincard-badge {
+  margin-left: auto;
+  font-family: var(--rv-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rv-accent-ink);
+  background: var(--rv-accent-soft);
+  border-radius: var(--rv-r-pill);
+  padding: 3px 8px;
+}
+.rv-plugincard-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--rv-ink-2);
+}

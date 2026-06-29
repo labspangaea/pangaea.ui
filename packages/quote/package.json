@@ -1,0 +1,21 @@
+{
+  "name": "@pangaea/ds-quote",
+  "version": "0.1.0",
+  "description": "Pangaea quote — blockquote / pull quote with optional citation.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "publishConfig": { "registry": "https://npm.pkg.github.com", "access": "restricted" },
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": ["*.css"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": { "react": "^18 || ^19", "react-dom": "^18 || ^19" }
+}

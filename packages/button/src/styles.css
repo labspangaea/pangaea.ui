@@ -1,0 +1,95 @@
+/* @pangaea/ds-button — pill button, 3 variants, press feedback. Uses --rv-* tokens
+   from @pangaea/ds-tokens (must render inside a .rv-page ancestor). */
+.rv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  min-height: 44px;
+  padding: 0.85em 1.5em;
+  border-radius: var(--rv-r-pill);
+  font-family: var(--rv-body);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s var(--rv-ease), box-shadow 0.2s var(--rv-ease),
+    background 0.2s var(--rv-ease), border-color 0.2s var(--rv-ease), color 0.2s var(--rv-ease);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.rv-btn .rv-arrow {
+  transition: transform 0.2s var(--rv-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rv-btn:hover .rv-arrow {
+    transform: translateX(3px);
+  }
+}
+.rv-btn--primary {
+  background: var(--rv-brand);
+  color: #fff;
+  box-shadow: var(--rv-sh-sm);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rv-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--rv-sh-md);
+  }
+}
+.rv-btn--ghost {
+  background: transparent;
+  color: var(--rv-ink);
+  border: 1px solid var(--rv-line-2);
+}
+.rv-btn--ghost:hover {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent-ink);
+}
+.rv-btn--blue {
+  background: var(--rv-accent-ink);
+  color: #fff;
+  box-shadow: var(--rv-sh-sm);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rv-btn--blue:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--rv-sh-md);
+  }
+}
+.rv-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.rv-btn:disabled:hover {
+  transform: none;
+  box-shadow: var(--rv-sh-sm);
+}
+/* press feedback — settle flat + shrink on press; wins over hover lift */
+.rv-btn:active:not(:disabled) {
+  transform: scale(0.96);
+  transition-duration: 0.09s;
+}
+.rv-btn--primary:active:not(:disabled),
+.rv-btn--blue:active:not(:disabled) {
+  box-shadow: var(--rv-sh-sm);
+}
+
+/* in dark theme the blue button's bg token is light, so flip to bright accent + dark text */
+[data-rv-theme="dark"] .rv-btn--blue {
+  background: var(--rv-accent);
+  color: #07101f;
+}
+
+/* inline text link */
+.rv-link {
+  color: var(--rv-accent-ink);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  text-decoration: none;
+}
+.rv-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

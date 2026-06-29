@@ -1,0 +1,102 @@
+/* @pangaea/ds-accordion — native <details>, animated plus/minus. Uses --rv-* tokens. */
+.rv-acc {
+  display: grid;
+  gap: 28px;
+  max-width: 820px;
+}
+/* inline / tight variant — items butt together (e.g. under a section head) */
+.rv-acc--inline {
+  gap: 0;
+  margin-top: clamp(18px, 3vw, 28px);
+}
+/* category label above a group of items (mono kicker + optional icon) */
+.rv-acc-cat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--rv-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rv-accent-ink);
+  margin-bottom: 6px;
+}
+.rv-acc-cat svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  stroke: var(--rv-accent-ink);
+}
+.rv-acc-item {
+  border-bottom: 1px solid var(--rv-line);
+}
+.rv-acc-item > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  font-family: var(--rv-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--rv-ink);
+}
+.rv-acc-item > summary::-webkit-details-marker {
+  display: none;
+}
+.rv-acc-plus {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: transform 0.2s var(--rv-ease);
+  color: var(--rv-accent-ink);
+}
+.rv-acc-plus::before,
+.rv-acc-plus::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: currentColor;
+  border-radius: 2px;
+}
+.rv-acc-plus::before {
+  width: 14px;
+  height: 2px;
+}
+.rv-acc-plus::after {
+  width: 2px;
+  height: 14px;
+}
+.rv-acc-item[open] > summary .rv-acc-plus {
+  transform: rotate(45deg);
+}
+.rv-acc-a {
+  padding: 0 0 20px;
+  font-size: 0.98rem;
+  color: var(--rv-ink-2);
+  max-width: 68ch;
+}
+.rv-acc-a > :first-child {
+  margin-top: 0;
+}
+.rv-acc-a > :last-child {
+  margin-bottom: 0;
+}
+.rv-acc-item[open] > .rv-acc-a {
+  animation: rv-acc-open 0.18s var(--rv-ease) both;
+}
+@keyframes rv-acc-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-acc-item[open] > .rv-acc-a {
+    animation: none;
+  }
+}

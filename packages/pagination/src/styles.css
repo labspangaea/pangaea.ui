@@ -1,0 +1,158 @@
+/* @pangaea/ds-pagination — prev/numbered/next. Uses --rv-* tokens. */
+.rv-pagination {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rv-page-btn {
+  min-width: 38px;
+  height: 38px;
+  min-height: 44px;
+  padding: 0 0.6em;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-bg);
+  color: var(--rv-ink-2);
+  font-family: var(--rv-body);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color 0.16s var(--rv-ease), color 0.16s var(--rv-ease), background 0.16s var(--rv-ease), transform 0.12s var(--rv-ease);
+}
+.rv-page-btn:hover:not(:disabled) {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent-ink);
+}
+.rv-page-btn.is-active {
+  background: var(--rv-accent-ink);
+  border-color: var(--rv-accent-ink);
+  color: #fff;
+}
+.rv-page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* compact Newer/Older pager (URL-based) */
+.rv-pnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+}
+.rv-pnav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  gap: 0.3em;
+  padding: 0.5em 1em;
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-bg);
+  color: var(--rv-ink);
+  font-family: var(--rv-body);
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.16s var(--rv-ease), color 0.16s var(--rv-ease), transform 0.12s var(--rv-ease);
+}
+.rv-pnav-btn:hover {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent-ink);
+}
+.rv-pnav-btn.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.rv-pnav-status {
+  font-family: var(--rv-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--rv-ink-3);
+  white-space: nowrap;
+}
+
+/* ellipsis gap in the numbered pager */
+.rv-page-gap {
+  min-width: 28px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--rv-ink-3);
+  user-select: none;
+}
+
+/* load more */
+.rv-loadmore {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+.rv-loadmore-count {
+  font-family: var(--rv-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--rv-ink-3);
+}
+.rv-loadmore-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-bg);
+  color: var(--rv-ink);
+  font-family: var(--rv-body);
+  font-size: 0.92rem;
+  padding: 0.6em 1.3em;
+  cursor: pointer;
+  transition: border-color 0.16s var(--rv-ease), color 0.16s var(--rv-ease), background 0.16s var(--rv-ease), transform 0.12s var(--rv-ease);
+}
+.rv-loadmore-btn:hover:not(:disabled) {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent-ink);
+  background: var(--rv-accent-soft);
+}
+.rv-loadmore-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* press feedback — subtle shrink on press (dots excluded: scaling a 9px dot looks wrong) */
+.rv-page-btn:active:not(:disabled),
+.rv-pnav-btn:active,
+.rv-loadmore-btn:active:not(:disabled) {
+  transform: scale(0.97);
+  transition-duration: 0.09s;
+}
+
+/* dots */
+.rv-pdots {
+  display: inline-flex;
+  gap: 9px;
+}
+.rv-pdot {
+  /* painted dot stays 9px; padding + content-box clip give a ~45px touch target */
+  width: 9px;
+  height: 9px;
+  padding: 18px;
+  box-sizing: content-box;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--rv-line-2);
+  background-clip: content-box;
+  cursor: pointer;
+  transition: background 0.18s var(--rv-ease), transform 0.18s var(--rv-ease), width 0.18s var(--rv-ease), border-radius 0.18s var(--rv-ease);
+}
+.rv-pdot:hover {
+  background-color: var(--rv-ink-3);
+}
+.rv-pdot.is-active {
+  width: 22px;
+  border-radius: var(--rv-r-pill);
+  background-color: var(--rv-accent-ink);
+}

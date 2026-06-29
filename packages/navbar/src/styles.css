@@ -1,0 +1,130 @@
+/* @pangaea/ds-navbar — sticky top site nav + mobile sheet. Uses --rv-* tokens. */
+.rv-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(150%) blur(14px);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--rv-ease), box-shadow 0.25s var(--rv-ease);
+}
+/* the hairline + soft shadow appear once the page scrolls (toggle `scrolled`) */
+.rv-nav.scrolled {
+  border-bottom-color: var(--rv-line);
+  box-shadow: var(--rv-sh-sm);
+}
+/* container props folded in so the package is standalone (the site composes the
+   same result from `.rv-container.rv-nav-inner`). */
+.rv-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 68px;
+  max-width: var(--rv-maxw);
+  margin-inline: auto;
+  padding-inline: var(--rv-gut);
+}
+.rv-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--rv-ink);
+}
+.rv-brand img {
+  height: 26px;
+  width: auto;
+}
+/* "Labs" in brand accent ink (AA on white; flips light in dark via the token) */
+.rv-brand-accent {
+  color: var(--rv-accent-ink);
+}
+.rv-nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.5vw, 22px);
+}
+.rv-nav-links a.rv-nav-item {
+  color: var(--rv-ink-2);
+  font-size: 0.95rem;
+  font-weight: 450;
+  text-decoration: none;
+  transition: color 0.18s var(--rv-ease);
+}
+.rv-nav-links a.rv-nav-item:hover {
+  color: var(--rv-accent-ink);
+}
+.rv-nav-links a.rv-nav-item.active {
+  color: var(--rv-ink);
+  font-weight: 550;
+}
+.rv-nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 6px;
+}
+.rv-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .rv-nav-links {
+    display: none;
+  }
+  .rv-nav-links.open {
+    display: flex;
+    position: absolute;
+    inset: 68px 0 auto 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px var(--rv-gut) 28px;
+    background: var(--rv-bg);
+    border-bottom: 1px solid var(--rv-line);
+    box-shadow: var(--rv-sh-md);
+  }
+  .rv-nav-toggle {
+    display: inline-grid;
+    place-items: center;
+    gap: 5px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .rv-nav-toggle span {
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--rv-ink);
+    transition: transform 0.2s var(--rv-ease), opacity 0.2s var(--rv-ease);
+  }
+  .rv-nav.open .rv-nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .rv-nav.open .rv-nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .rv-nav.open .rv-nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .rv-nav-actions {
+    margin-left: 0;
+  }
+}
+
+/* translucent nav over the dark canvas */
+[data-rv-theme="dark"] .rv-nav {
+  background: rgba(14, 22, 38, 0.82);
+}
+/* dark mode: knock the two-tone navy logo out to solid white so it reads */
+[data-rv-theme="dark"] .rv-brand img {
+  filter: brightness(0) invert(1);
+}

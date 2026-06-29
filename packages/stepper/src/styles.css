@@ -1,0 +1,113 @@
+/* @pangaea/ds-stepper — horizontal or vertical timeline. Uses --rv-* tokens. */
+.rv-stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.rv-step {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+.rv-step-node {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--rv-mono);
+  font-size: 0.82rem;
+  border: 2px solid var(--rv-line-2);
+  background: var(--rv-bg);
+  color: var(--rv-ink-3);
+}
+.rv-step-check svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+.rv-step-label {
+  font-weight: 500;
+  color: var(--rv-ink);
+  font-size: 0.94rem;
+}
+.rv-step-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.84rem;
+  color: var(--rv-ink-3);
+}
+
+/* status */
+.rv-step--done .rv-step-node {
+  background: var(--rv-accent-ink);
+  border-color: var(--rv-accent-ink);
+  color: #fff;
+}
+.rv-step--active .rv-step-node {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent-ink);
+  box-shadow: 0 0 0 4px var(--rv-accent-soft);
+}
+.rv-step--upcoming .rv-step-label {
+  color: var(--rv-ink-3);
+}
+
+/* —— horizontal —— */
+.rv-stepper--horizontal {
+  align-items: flex-start;
+  gap: 0;
+}
+.rv-stepper--horizontal .rv-step {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 8px;
+}
+.rv-stepper--horizontal .rv-step-line {
+  position: absolute;
+  top: 15px;
+  left: 32px;
+  right: 0;
+  height: 2px;
+  background: var(--rv-line-2);
+}
+.rv-stepper--horizontal .rv-step--done .rv-step-line {
+  background: var(--rv-accent-ink);
+}
+.rv-stepper--horizontal .rv-step-body {
+  margin-top: 10px;
+}
+
+/* —— vertical —— */
+.rv-stepper--vertical {
+  flex-direction: column;
+  gap: 0;
+}
+.rv-stepper--vertical .rv-step {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 22px;
+}
+.rv-stepper--vertical .rv-step:last-child {
+  padding-bottom: 0;
+}
+.rv-stepper--vertical .rv-step-line {
+  position: absolute;
+  top: 32px;
+  bottom: 0;
+  left: 15px;
+  width: 2px;
+  background: var(--rv-line-2);
+}
+.rv-stepper--vertical .rv-step--done .rv-step-line {
+  background: var(--rv-accent-ink);
+}
+.rv-stepper--vertical .rv-step-body {
+  padding-top: 4px;
+}

@@ -1,0 +1,54 @@
+/* @pangaea/ds-teamcard — matches pangaea.id `.rv-member` (navy avatar, name, role, bio). */
+.rv-member {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  color: inherit;
+  text-decoration: none;
+}
+.rv-member .rv-avatar {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--rv-brand);
+  color: #fff;
+  font-family: var(--rv-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  transition: transform 0.2s var(--rv-ease);
+}
+.rv-member .rv-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rv-member h4 {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--rv-ink);
+}
+.rv-member-role {
+  font-size: 0.82rem;
+  color: var(--rv-accent-ink);
+}
+.rv-member p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--rv-ink-2);
+}
+a.rv-member:hover h4 {
+  color: var(--rv-accent-ink);
+}
+@media (hover: hover) and (pointer: fine) {
+  a.rv-member:hover .rv-avatar {
+    transform: scale(1.05);
+  }
+}
+.rv-member-socials {
+  margin-top: 4px;
+}

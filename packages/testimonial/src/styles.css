@@ -1,0 +1,68 @@
+/* @pangaea/ds-testimonial — rotating attributed quotes. Uses --rv-* tokens. */
+.rv-tcar {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+}
+.rv-tcar-fig {
+  margin: 0;
+  animation: rv-tcar-in 0.3s var(--rv-ease);
+}
+.rv-tcar-fig blockquote {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  line-height: 1.3;
+  color: var(--rv-ink);
+  text-wrap: balance;
+}
+.rv-tcar-fig figcaption {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  color: var(--rv-ink-2);
+}
+.rv-tcar-fig figcaption strong {
+  color: var(--rv-ink);
+}
+.rv-tcar-role {
+  color: var(--rv-ink-3);
+}
+.rv-tcar-dots {
+  display: inline-flex;
+  gap: 8px;
+}
+.rv-tcar-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--rv-line-2);
+  cursor: pointer;
+  transition: background 0.18s var(--rv-ease), transform 0.18s var(--rv-ease);
+}
+.rv-tcar-dot:hover {
+  background: var(--rv-ink-3);
+}
+.rv-tcar-dot.is-active {
+  background: var(--rv-accent-ink);
+  transform: scale(1.25);
+}
+.rv-tcar-dot:not(.is-active):active {
+  transform: scale(0.9);
+}
+@keyframes rv-tcar-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-tcar-fig {
+    animation: none;
+  }
+}

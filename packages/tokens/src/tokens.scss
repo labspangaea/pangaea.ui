@@ -1,0 +1,113 @@
+// ============================================================
+//  PANGAEA DESIGN TOKENS — SOURCE OF TRUTH
+//  Two brand hex only: navy #203150 + electric blue #3FA9F5, on white.
+//  Dual-theme. Ported verbatim from pangaea.id (DESIGN.md / revamp.css).
+//  Compiles to dist/tokens.css. Tokens keep the --rv-* names so any
+//  migration from the live site is mechanical.
+// ============================================================
+
+$light: (
+  bg: #ffffff,
+  bg-alt: #f4f8fd,
+  bg-tint: #eaf3fd,
+  ink: #203150,
+  ink-2: #46566f,
+  ink-3: #5f6e88,
+  brand: #203150,
+  accent: #3fa9f5,
+  accent-ink: #1568b4,
+  accent-soft: #e7f2fe,
+  line: rgba(32, 49, 80, 0.1),
+  line-2: rgba(32, 49, 80, 0.16),
+);
+
+$dark: (
+  bg: #0e1626,
+  bg-alt: #131e34,
+  bg-tint: #18233f,
+  ink: #eef3fb,
+  ink-2: #b3c0d6,
+  ink-3: #8493ac,
+  brand: #34507e,
+  accent: #4fb0f6,
+  accent-ink: #7cc4fa,
+  accent-soft: #16273f,
+  line: rgba(255, 255, 255, 0.1),
+  line-2: rgba(255, 255, 255, 0.18),
+);
+
+@mixin emit($map) {
+  @each $k, $v in $map {
+    --rv-#{$k}: #{$v};
+  }
+}
+
+.rv-page {
+  @include emit($light);
+
+  // focus ring color — accessible blue for WCAG 1.4.11 non-text contrast (≥3:1).
+  // accent-ink #1568b4 on panel bg-alt #f4f8fd ≈ 5.36:1 PASS
+  // (plain accent #3fa9f5 would be only 2.40:1 — borderline FAIL).
+  --rv-focus: var(--rv-accent-ink);
+
+  // shadows — soft, navy-tinted (light)
+  --rv-sh-sm: 0 1px 2px rgba(16, 33, 64, 0.06), 0 2px 6px rgba(16, 33, 64, 0.05);
+  --rv-sh-md: 0 8px 26px rgba(16, 33, 64, 0.09), 0 2px 8px rgba(16, 33, 64, 0.05);
+  --rv-sh-lg: 0 22px 56px rgba(16, 33, 64, 0.14);
+
+  // type
+  --rv-display: "Clash Display", "Geist", system-ui, sans-serif;
+  --rv-body: "Geist", system-ui, -apple-system, sans-serif;
+  --rv-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  // shape / layout
+  --rv-r: 16px;
+  --rv-r-sm: 10px;
+  --rv-r-pill: 999px;
+  --rv-maxw: 1120px;
+  --rv-gut: clamp(20px, 5vw, 48px);
+  --rv-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  min-height: 100vh;
+  background: var(--rv-bg);
+  color: var(--rv-ink-2);
+  font-family: var(--rv-body);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rv-page *,
+.rv-page *::before,
+.rv-page *::after {
+  box-sizing: border-box;
+}
+
+.rv-page ::selection {
+  background: var(--rv-accent-soft);
+  color: var(--rv-ink);
+}
+
+// one branded focus ring for every interactive element (both themes)
+.rv-page :is(a, button, summary, select, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--rv-focus);
+  outline-offset: 2px;
+}
+
+// —— dark theme — opt-in via [data-rv-theme="dark"] on <html> ——
+[data-rv-theme="dark"],
+[data-rv-theme="dark"] body {
+  background: #0e1626;
+}
+
+[data-rv-theme="dark"] .rv-page {
+  @include emit($dark);
+
+  // focus ring color — keep the brand electric accent #4fb0f6 on dark panel
+  // bg-alt #131e34 ≈ 7.03:1 PASS (already well above the 3:1 floor).
+  --rv-focus: var(--rv-accent);
+
+  --rv-sh-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.28);
+  --rv-sh-md: 0 8px 26px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.34);
+  --rv-sh-lg: 0 22px 56px rgba(0, 0, 0, 0.6);
+}

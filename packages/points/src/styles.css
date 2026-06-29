@@ -1,0 +1,45 @@
+/* @pangaea/ds-points — numbered feature points. Ported from pangaea.id. */
+.rv-points {
+  display: grid;
+  gap: clamp(16px, 2vw, 22px);
+  width: 100%;
+}
+.rv-points--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.rv-points--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.rv-point {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.rv-point .rv-point-n {
+  font-family: var(--rv-mono);
+  font-size: 0.82rem;
+  color: var(--rv-accent-ink);
+}
+.rv-point h4 {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--rv-ink);
+}
+.rv-point p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--rv-ink-2);
+}
+@media (max-width: 980px) {
+  .rv-points--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .rv-points--3,
+  .rv-points--2 {
+    grid-template-columns: 1fr;
+  }
+}

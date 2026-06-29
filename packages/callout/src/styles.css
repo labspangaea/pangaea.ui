@@ -1,0 +1,84 @@
+/* @pangaea/ds-callout — icon + tinted panel. Semantic status hues (the sanctioned
+   exception to the two-hex rule); everything else is --rv-* tokens. No side-stripe. */
+.rv-callout {
+  display: flex;
+  gap: 13px;
+  margin: 24px 0;
+  padding: 15px 17px;
+  border: 1px solid var(--cl-bd, var(--rv-line));
+  border-radius: var(--rv-r-sm);
+  background: var(--cl-bg, var(--rv-bg-alt));
+}
+.rv-callout-icon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--cl-c, var(--rv-accent-ink));
+}
+.rv-callout-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.rv-callout-title {
+  margin: 0 0 3px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--cl-c, var(--rv-ink));
+}
+.rv-callout-content {
+  color: var(--rv-ink-2);
+}
+.rv-callout-content > :first-child {
+  margin-top: 0;
+}
+.rv-callout-content p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin: 0 0 8px;
+  color: var(--rv-ink-2);
+}
+.rv-callout-content > :last-child,
+.rv-callout-content p:last-child {
+  margin-bottom: 0;
+}
+.rv-callout--note,
+.rv-callout--tip {
+  --cl-c: var(--rv-accent-ink);
+  --cl-bg: var(--rv-accent-soft);
+  --cl-bd: #bfe0fb;
+}
+.rv-callout--caveat {
+  --cl-c: #a85a1a;
+  --cl-bg: #fdf3e7;
+  --cl-bd: #f3dcbf;
+}
+.rv-callout--warning {
+  --cl-c: #b3261e;
+  --cl-bg: #fdeceb;
+  --cl-bd: #f5cdca;
+}
+.rv-callout--rule {
+  --cl-c: #203150;
+  --cl-bg: #eef2f8;
+  --cl-bd: #ccd6e6;
+}
+/* dark theme: tinted status panels need darker fills to stay legible */
+[data-rv-theme="dark"] .rv-callout--note,
+[data-rv-theme="dark"] .rv-callout--tip {
+  --cl-bd: #244a6e;
+}
+[data-rv-theme="dark"] .rv-callout--caveat {
+  --cl-c: #f0b072;
+  --cl-bg: #2a2012;
+  --cl-bd: #4d3a1c;
+}
+[data-rv-theme="dark"] .rv-callout--warning {
+  --cl-c: #ff8478;
+  --cl-bg: #341d1b;
+  --cl-bd: #5a2f2a;
+}
+[data-rv-theme="dark"] .rv-callout--rule {
+  --cl-c: #c8d6ec;
+  --cl-bg: #19222f;
+  --cl-bd: #2f3f57;
+}

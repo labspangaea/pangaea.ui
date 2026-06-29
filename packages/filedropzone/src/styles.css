@@ -1,0 +1,40 @@
+/* @pangaea/ds-filedropzone — drag-and-drop upload area. Uses --rv-* tokens. */
+.rv-dropzone {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1.5px dashed var(--rv-line-2);
+  border-radius: var(--rv-r);
+  background: var(--rv-bg-alt);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.18s var(--rv-ease), background 0.18s var(--rv-ease);
+}
+.rv-dropzone:hover,
+.rv-dropzone.is-over {
+  border-color: var(--rv-accent);
+  background: var(--rv-accent-soft);
+}
+.rv-dropzone-icon {
+  color: var(--rv-accent-ink);
+}
+.rv-dropzone-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+.rv-dropzone-text {
+  font-size: 0.96rem;
+  color: var(--rv-ink-2);
+}
+.rv-dropzone-link {
+  color: var(--rv-accent-ink);
+  font-weight: 500;
+}
+.rv-dropzone-hint {
+  font-family: var(--rv-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--rv-ink-3);
+}

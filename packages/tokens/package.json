@@ -1,0 +1,24 @@
+{
+  "name": "@pangaea/ds-tokens",
+  "version": "0.1.0",
+  "description": "Pangaea design tokens — the two-hex blue-on-white system (light + dark), self-hosted fonts, and a Tailwind v4 @theme preset. Ported verbatim from pangaea.id DESIGN.md.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "files": ["dist"],
+  "exports": {
+    "./tokens.css": "./dist/tokens.css",
+    "./theme.css": "./dist/theme.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./fonts/*": "./dist/fonts/*"
+  },
+  "scripts": {
+    "build": "sass src/tokens.scss dist/tokens.css --no-source-map --style=expanded && cp src/theme.css dist/theme.css && cp src/fonts.css dist/fonts.css && mkdir -p dist/fonts && cp fonts/*.woff2 dist/fonts/"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

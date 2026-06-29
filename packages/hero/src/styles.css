@@ -1,0 +1,82 @@
+/* @pangaea/ds-hero — typographic hero + optional visual. Uses --rv-* tokens. */
+.rv-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(56px, 8vw, 104px);
+  background: radial-gradient(120% 120% at 88% 0%, var(--rv-bg-tint) 0%, var(--rv-bg) 56%);
+}
+/* container + grid folded together so the package is standalone (the site composes
+   the same result from `.rv-container.rv-hero-grid`). */
+.rv-hero-grid {
+  max-width: var(--rv-maxw);
+  margin-inline: auto;
+  padding-inline: var(--rv-gut);
+}
+.rv-hero-grid--split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.rv-hero-copy {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+/* centered typographic hero (no visual) — additive variant; the site's heroes are
+   always split, so this has no `.rv-*` counterpart. */
+.rv-hero--center .rv-hero-copy {
+  justify-items: center;
+  text-align: center;
+  margin-inline: auto;
+  max-width: 36ch;
+}
+.rv-hero-kicker {
+  font-family: var(--rv-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rv-accent-ink);
+}
+.rv-hero-h1 {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--rv-ink);
+  text-wrap: balance;
+}
+.rv-hero-lead {
+  margin: 0;
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  color: var(--rv-ink-2);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+.rv-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+.rv-hero-visual {
+  min-width: 0;
+}
+@media (max-width: 980px) {
+  .rv-hero-grid--split {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 44px);
+  }
+}
+@media (max-width: 560px) {
+  .rv-hero-actions {
+    width: 100%;
+  }
+  .rv-hero-actions .rv-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}

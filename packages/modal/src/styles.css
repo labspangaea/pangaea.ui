@@ -1,0 +1,83 @@
+/* @pangaea/ds-modal — native <dialog>, centered card, soft backdrop. Uses --rv-* tokens. */
+.rv-modal {
+  /* Explicitly centre — don't rely on the UA `dialog { margin:auto }`, which CSS
+     resets (e.g. Tailwind preflight) zero out, dropping the modal to top-left. */
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  max-width: min(92vw, 520px);
+  height: fit-content;
+  max-height: calc(100dvh - 48px);
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--rv-ink-2);
+}
+.rv-modal::backdrop {
+  background: rgba(16, 22, 38, 0.45);
+  backdrop-filter: blur(2px);
+}
+.rv-modal-card {
+  background: var(--rv-bg);
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r);
+  box-shadow: var(--rv-sh-lg);
+  overflow: hidden;
+}
+.rv-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--rv-line);
+}
+.rv-modal-head h3 {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--rv-ink);
+}
+.rv-modal-x {
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--rv-ink-3);
+  cursor: pointer;
+  padding: 0 4px;
+  transition: transform 0.12s var(--rv-ease);
+}
+.rv-modal-x:hover {
+  color: var(--rv-accent-ink);
+}
+.rv-modal-x:active {
+  transform: scale(0.9);
+}
+.rv-modal-body {
+  padding: 20px;
+}
+.rv-modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--rv-line);
+}
+/* entrance — honor reduced motion */
+.rv-modal[open] {
+  animation: rv-modal-in 0.18s var(--rv-ease);
+}
+@keyframes rv-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-modal[open] {
+    animation: none;
+  }
+}

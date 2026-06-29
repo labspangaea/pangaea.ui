@@ -1,0 +1,93 @@
+/* @pangaea/ds-field — form fields. Uses --rv-* tokens. */
+.rv-field {
+  display: grid;
+  gap: 7px;
+}
+.rv-field > label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--rv-ink);
+}
+.rv-field-opt {
+  font-weight: 400;
+  color: var(--rv-ink-3);
+}
+.rv-field-hint {
+  font-size: 0.82rem;
+  color: var(--rv-ink-3);
+}
+
+.rv-input {
+  font: inherit;
+  font-size: 0.96rem;
+  width: 100%;
+  min-height: 44px;
+  color: var(--rv-ink);
+  background: var(--rv-bg);
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-sm);
+  padding: 0.7em 0.85em;
+  transition: border-color 0.18s var(--rv-ease), box-shadow 0.18s var(--rv-ease);
+}
+.rv-input::placeholder {
+  color: var(--rv-ink-3);
+}
+.rv-input:focus {
+  outline: none;
+  border-color: var(--rv-accent);
+  box-shadow: 0 0 0 3px var(--rv-accent-soft);
+}
+.rv-textarea {
+  resize: vertical;
+  min-height: 5.5em;
+}
+.rv-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--rv-ink-3) 50%),
+    linear-gradient(135deg, var(--rv-ink-3) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 1.05em, calc(100% - 13px) 1.05em;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.2em;
+}
+
+/* checkbox / radio rows */
+.rv-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 0.94rem;
+  color: var(--rv-ink-2);
+  cursor: pointer;
+}
+.rv-check input {
+  width: 1.05em;
+  height: 1.05em;
+  accent-color: var(--rv-accent-ink);
+  cursor: pointer;
+}
+
+/* inline field error (semantic red, dark-aware) — matches pangaea.id .rv-field-err
+   (the shared .rv-form-ok/.rv-form-err/.rv-field-err flex row + the 0.8rem size). */
+.rv-field-err {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #c0392b;
+}
+.rv-field-err svg {
+  flex: none;
+}
+[data-rv-theme="dark"] .rv-field-err {
+  color: #ff8478;
+}
+.rv-field-err ~ .rv-input,
+.rv-input[aria-invalid="true"] {
+  border-color: #c0392b;
+}
+[data-rv-theme="dark"] .rv-field-err ~ .rv-input,
+[data-rv-theme="dark"] .rv-input[aria-invalid="true"] {
+  border-color: #ff8478;
+}

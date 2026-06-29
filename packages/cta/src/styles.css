@@ -1,0 +1,45 @@
+/* @pangaea/ds-cta — full-bleed navy-gradient CTA band. Uses --rv-* tokens. */
+.rv-cta-band {
+  text-align: center;
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  padding: clamp(40px, 6vw, 72px) var(--rv-gut);
+  border-radius: var(--rv-r);
+  background: linear-gradient(155deg, #243a5e, var(--rv-brand));
+  color: #fff;
+}
+.rv-cta-band h2 {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.rv-cta-lead {
+  margin: 0;
+  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.82);
+}
+.rv-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 4px;
+}
+/* on the navy band the primary button flips to white-on-navy for contrast */
+.rv-cta-band .rv-btn--primary {
+  background: #fff;
+  color: var(--rv-brand);
+}
+/* on the navy band, a ghost button needs a light border + light text */
+.rv-cta-band .rv-btn--ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.rv-cta-band .rv-btn--ghost:hover {
+  border-color: #fff;
+  color: #fff;
+}

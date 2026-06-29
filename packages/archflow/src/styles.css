@@ -1,0 +1,40 @@
+/* @pangaea/ds-archflow — pill-node pipeline with arrows. Ported from pangaea.id. */
+.rv-archflow {
+  margin: 26px 0;
+}
+.rv-archflow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+.rv-archflow-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.rv-archflow-node {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 15px;
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-bg);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--rv-ink);
+}
+.rv-archflow-node.is-last {
+  border-color: var(--rv-accent);
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+}
+.rv-archflow-arrow {
+  color: var(--rv-ink-3);
+  font-size: 1rem;
+}
+.rv-archflow figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--rv-ink-3);
+}

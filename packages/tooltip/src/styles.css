@@ -1,0 +1,57 @@
+/* @pangaea/ds-tooltip — CSS hover/focus tooltip, 4 placements. Uses --rv-* tokens. */
+.rv-tooltip {
+  position: relative;
+  display: inline-flex;
+  outline: none;
+}
+.rv-tooltip-pop {
+  position: absolute;
+  z-index: 60;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-ink);
+  color: var(--rv-bg);
+  font-size: 0.78rem;
+  line-height: 1.3;
+  box-shadow: var(--rv-sh-md);
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.14s var(--rv-ease), transform 0.14s var(--rv-ease);
+}
+.rv-tooltip:hover .rv-tooltip-pop,
+.rv-tooltip:focus-visible .rv-tooltip-pop {
+  opacity: 1;
+  transform: scale(1);
+}
+.rv-tooltip--top .rv-tooltip-pop {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: bottom center;
+}
+.rv-tooltip--bottom .rv-tooltip-pop {
+  top: calc(100% + 8px);
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: top center;
+}
+.rv-tooltip--left .rv-tooltip-pop {
+  right: calc(100% + 8px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: center right;
+}
+.rv-tooltip--right .rv-tooltip-pop {
+  left: calc(100% + 8px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: center left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-tooltip-pop {
+    transition: opacity 0.14s var(--rv-ease);
+    transform: none;
+  }
+}

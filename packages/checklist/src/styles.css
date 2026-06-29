@@ -1,0 +1,19 @@
+/* @pangaea/ds-checklist — ticked feature/benefit list. Ported from pangaea.id. */
+.rv-checklist {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+.rv-checklist li {
+  display: flex;
+  gap: 12px;
+  font-size: 0.98rem;
+  color: var(--rv-ink-2);
+}
+.rv-checklist li svg {
+  flex: none;
+  color: var(--rv-accent-ink);
+  margin-top: 2px;
+}

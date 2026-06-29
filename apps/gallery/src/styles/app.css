@@ -1,0 +1,324 @@
+@import "tailwindcss";
+@import "@pangaea/ds-tokens/theme.css";
+
+/* tokens + fonts */
+@import "@pangaea/ds-tokens/tokens.css";
+@import "@pangaea/ds-tokens/fonts.css";
+
+/* component CSS (the published artifacts) */
+@import "@pangaea/ds-button/styles.css";
+@import "@pangaea/ds-card/styles.css";
+@import "@pangaea/ds-section/styles.css";
+@import "@pangaea/ds-navbar/styles.css";
+@import "@pangaea/ds-badge/styles.css";
+@import "@pangaea/ds-callout/styles.css";
+@import "@pangaea/ds-quote/styles.css";
+@import "@pangaea/ds-field/styles.css";
+@import "@pangaea/ds-toggle/styles.css";
+@import "@pangaea/ds-tabs/styles.css";
+@import "@pangaea/ds-pagination/styles.css";
+@import "@pangaea/ds-accordion/styles.css";
+@import "@pangaea/ds-code/styles.css";
+@import "@pangaea/ds-tooltip/styles.css";
+@import "@pangaea/ds-modal/styles.css";
+@import "@pangaea/ds-progress/styles.css";
+@import "@pangaea/ds-avatar/styles.css";
+@import "@pangaea/ds-filedropzone/styles.css";
+@import "@pangaea/ds-hero/styles.css";
+@import "@pangaea/ds-testimonial/styles.css";
+@import "@pangaea/ds-cta/styles.css";
+@import "@pangaea/ds-social/styles.css";
+@import "@pangaea/ds-pricing/styles.css";
+@import "@pangaea/ds-stepper/styles.css";
+@import "@pangaea/ds-teamcard/styles.css";
+@import "@pangaea/ds-logowall/styles.css";
+@import "@pangaea/ds-plugincard/styles.css";
+@import "@pangaea/ds-stat/styles.css";
+@import "@pangaea/ds-pillar/styles.css";
+@import "@pangaea/ds-points/styles.css";
+@import "@pangaea/ds-dodont/styles.css";
+@import "@pangaea/ds-compare/styles.css";
+@import "@pangaea/ds-checklist/styles.css";
+@import "@pangaea/ds-references/styles.css";
+@import "@pangaea/ds-table/styles.css";
+@import "@pangaea/ds-archflow/styles.css";
+
+/* ──────────────  Storybook-style 3-pane shell  ────────────── */
+body {
+  margin: 0;
+}
+.sb {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr) 320px;
+  height: 100vh;
+}
+
+/* left: component menu */
+.sb-menu {
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--rv-line);
+  background: var(--rv-bg-alt);
+  padding: 18px 14px 40px;
+}
+.sb-brand {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--rv-ink);
+  padding: 4px 8px 16px;
+}
+.sb-brand b {
+  color: var(--rv-accent-ink);
+  font-weight: 600;
+}
+.sb-group {
+  margin-bottom: 14px;
+}
+.sb-group-head {
+  font-family: var(--rv-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rv-ink-3);
+  padding: 4px 8px;
+}
+.sb-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--rv-r-sm);
+  font-family: var(--rv-body);
+  font-size: 0.88rem;
+  color: var(--rv-ink-2);
+  transition: background 0.14s var(--rv-ease), color 0.14s var(--rv-ease);
+}
+.sb-item:hover {
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+}
+.sb-item.is-active {
+  background: var(--rv-accent-ink);
+  color: #fff;
+}
+/* dark: --rv-accent-ink is a light blue, so white-on-it = 1.89:1. Flip to a
+   soft tint + accent-ink text (~8:1) for a readable selected state. */
+[data-rv-theme="dark"] .rv-page .sb-item.is-active {
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+}
+
+/* skip link — first focusable, jumps keyboard users past the ~40-item nav */
+.sb-skip {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  z-index: 60;
+  padding: 8px 14px;
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-accent-ink);
+  color: #fff;
+  font-size: 0.85rem;
+  transform: translateY(-150%);
+  transition: transform 0.16s var(--rv-ease);
+}
+.sb-skip:focus {
+  transform: translateY(0);
+}
+
+/* center: toolbar + canvas */
+.sb-center {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.sb-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(16px, 3vw, 32px);
+  border-bottom: 1px solid var(--rv-line);
+  background: var(--rv-bg);
+}
+.sb-toolbar-title {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--rv-ink);
+}
+.sb-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-canvas {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px);
+  background: var(--rv-bg);
+  background-image: radial-gradient(var(--rv-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.sb-stage {
+  width: 100%;
+  max-width: 880px;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+}
+
+/* right: controls + usage + info */
+.sb-panel {
+  height: 100vh;
+  overflow-y: auto;
+  border-left: 1px solid var(--rv-line);
+  background: var(--rv-bg-alt);
+  padding: 18px 16px 48px;
+}
+.sb-panel-sec {
+  padding-bottom: 22px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--rv-line);
+}
+.sb-panel-sec:last-child {
+  border-bottom: none;
+}
+.sb-panel-head {
+  margin: 0 0 12px;
+  font-family: var(--rv-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rv-ink-3);
+}
+.sb-controls {
+  display: grid;
+  gap: 12px;
+}
+.sb-control {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+.sb-control-label {
+  font-family: var(--rv-mono);
+  font-size: 0.72rem;
+  color: var(--rv-ink-2);
+}
+.sb-input {
+  font: inherit;
+  font-size: 0.86rem;
+  width: 100%;
+  color: var(--rv-ink);
+  background: var(--rv-bg);
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-sm);
+  padding: 0.5em 0.7em;
+}
+.sb-input:focus {
+  outline: none;
+  border-color: var(--rv-accent);
+  box-shadow: 0 0 0 3px var(--rv-accent-soft);
+}
+.sb-textarea {
+  resize: vertical;
+  min-height: 96px;
+  font-family: var(--rv-mono);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+.sb-input--err {
+  border-color: #c0392b;
+}
+.sb-err {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  color: #c0392b;
+}
+.sb-muted {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--rv-ink-3);
+  margin: 0 0 8px;
+}
+.sb-pkg {
+  font-family: var(--rv-mono);
+  font-size: 0.76rem;
+  color: var(--rv-accent-ink);
+}
+/* wrap long usage lines in the panel instead of clipping */
+.sb-panel .rv-code pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* responsive: ≤1100 drop the right panel below; ≤760 stack the menu on top */
+@media (max-width: 1100px) {
+  .sb {
+    grid-template-columns: 220px minmax(0, 1fr);
+    height: auto;
+    min-height: 100vh;
+  }
+  .sb-menu {
+    position: sticky;
+    top: 0;
+  }
+  .sb-center {
+    height: auto;
+    overflow: visible;
+  }
+  .sb-canvas {
+    overflow: visible;
+  }
+  .sb-panel {
+    grid-column: 1 / -1;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--rv-line);
+  }
+}
+@media (max-width: 760px) {
+  .sb {
+    grid-template-columns: 1fr;
+  }
+  .sb-menu {
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--rv-line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    align-items: center;
+  }
+  .sb-brand {
+    width: 100%;
+    padding-bottom: 8px;
+  }
+  .sb-group {
+    margin: 0;
+    display: contents;
+  }
+  .sb-group-head {
+    display: none;
+  }
+  .sb-item {
+    width: auto;
+    padding: 4px 9px;
+    font-size: 0.8rem;
+    border: 1px solid var(--rv-line);
+  }
+}

@@ -1,0 +1,69 @@
+/* @pangaea/ds-dodont — green/red guidance pair. Ported from pangaea.id.
+   Semantic status hues (the sanctioned exception to the two-hex rule). */
+.rv-dodont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 24px 0;
+}
+.rv-dd {
+  padding: 14px 16px;
+  border: 1px solid var(--dd-bd);
+  border-radius: var(--rv-r-sm);
+  background: var(--dd-bg);
+}
+.rv-dd-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--dd-c);
+}
+.rv-dd-head svg {
+  flex: none;
+}
+.rv-dd-body {
+  color: var(--rv-ink-2);
+}
+.rv-dd-body > :first-child {
+  margin-top: 0;
+}
+.rv-dd-body > :last-child {
+  margin-bottom: 0;
+}
+.rv-dd-body ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.95rem;
+}
+.rv-dd-body p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.rv-dd--do {
+  --dd-c: #157a4f;
+  --dd-bg: #ecf8f2;
+  --dd-bd: #c9ead8;
+}
+.rv-dd--dont {
+  --dd-c: #b3261e;
+  --dd-bg: #fdeceb;
+  --dd-bd: #f5cdca;
+}
+[data-rv-theme="dark"] .rv-dd--do {
+  --dd-c: #5fd0a0;
+  --dd-bg: #12241d;
+  --dd-bd: #224b3a;
+}
+[data-rv-theme="dark"] .rv-dd--dont {
+  --dd-c: #ff8478;
+  --dd-bg: #341d1b;
+  --dd-bd: #5a2f2a;
+}
+@media (max-width: 560px) {
+  .rv-dodont {
+    grid-template-columns: 1fr;
+  }
+}

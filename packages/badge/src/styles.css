@@ -1,0 +1,72 @@
+/* @pangaea/ds-badge — mono uppercase pill. Uses --rv-* tokens. Variants ported
+   verbatim from the live site (.rv-chip--solid/--soon/--red/--free/--claude). */
+.rv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42em; /* space an optional leading icon from the label */
+  padding: 0.34em 0.8em;
+  border-radius: var(--rv-r-pill);
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+  font-family: var(--rv-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rv-chip svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+}
+/* solid chip (emphasis, e.g. the VAPT/security test gate). Light fill uses the
+   accessible ink (white on #1568b4 = 5.72:1); plain --rv-accent fails AA at 2.56:1. */
+.rv-chip--solid {
+  background: var(--rv-accent-ink);
+  color: #fff;
+}
+/* dark: --rv-accent-ink is light (#7cc4fa), so flip to dark navy text (≈8:1) */
+[data-rv-theme='dark'] .rv-chip--solid {
+  background: var(--rv-accent-ink);
+  color: #07101f;
+}
+/* "coming soon" — amber, reads as urgency/anticipation vs the blue palette */
+.rv-chip--soon {
+  background: #fde8cc;
+  color: #9a3d00;
+}
+[data-rv-theme='dark'] .rv-chip--soon {
+  background: #2a2012;
+  color: #f0b072;
+}
+/* alert */
+.rv-chip--red {
+  background: #fde8e8;
+  color: #c0392b;
+}
+[data-rv-theme='dark'] .rv-chip--red {
+  background: #341d1b;
+  color: #ff8478;
+}
+/* free (agent card badge) — green */
+.rv-chip--free {
+  background: #e7f5ee;
+  color: #15663f;
+}
+[data-rv-theme='dark'] .rv-chip--free {
+  background: #11271b;
+  color: #6fcf9b;
+}
+/* Claude Code badge — pale blue with a leading mark */
+.rv-chip--claude {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+}
+.rv-chip--claude svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+}

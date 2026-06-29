@@ -1,0 +1,51 @@
+/* @pangaea/ds-compare — neutral side-by-side columns. Ported from pangaea.id. */
+.rv-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.rv-compare-col {
+  padding: 14px 16px;
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-bg-alt);
+}
+.rv-compare-col--good {
+  background: var(--rv-accent-soft);
+  border-color: #bfe0fb;
+}
+.rv-compare-head {
+  margin: 0 0 10px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--rv-line);
+  font-family: var(--rv-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rv-ink-3);
+}
+.rv-compare-col--good .rv-compare-head {
+  color: var(--rv-accent-ink);
+}
+.rv-compare-body {
+  color: var(--rv-ink-2);
+}
+.rv-compare-body > :first-child {
+  margin-top: 0;
+}
+.rv-compare-body > :last-child {
+  margin-bottom: 0;
+}
+.rv-compare-body ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.95rem;
+}
+.rv-compare-body p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+[data-rv-theme="dark"] .rv-compare-col--good {
+  border-color: #244a6e;
+}

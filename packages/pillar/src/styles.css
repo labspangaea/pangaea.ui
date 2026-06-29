@@ -1,0 +1,50 @@
+/* @pangaea/ds-pillar — icon + heading + body + link, 3-up. Ported from pangaea.id. */
+.rv-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  width: 100%;
+}
+.rv-pillar {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.rv-pillar .rv-pillar-ico {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--rv-accent-soft);
+  color: var(--rv-accent-ink);
+}
+.rv-pillar .rv-pillar-ico svg {
+  width: 22px;
+  height: 22px;
+}
+.rv-pillar h3 {
+  margin: 0;
+  font-family: var(--rv-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--rv-ink);
+}
+.rv-pillar p {
+  margin: 0;
+  font-size: 0.96rem;
+  color: var(--rv-ink-2);
+}
+.rv-pillar .rv-link {
+  margin-top: 2px;
+}
+@media (max-width: 980px) {
+  .rv-pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .rv-pillars {
+    grid-template-columns: 1fr;
+  }
+}

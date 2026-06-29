@@ -1,0 +1,45 @@
+/* @pangaea/ds-quote — blockquote / pull quote. Uses --rv-* tokens. */
+.rv-quote {
+  margin: 22px 0;
+}
+/* non-pull — the bordered blockquote (mirrors .rv-prose blockquote on pangaea.id) */
+.rv-quote blockquote {
+  margin: 0;
+  padding: 13px 17px;
+  background: var(--rv-bg-alt);
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r-sm);
+  color: var(--rv-ink-2);
+}
+.rv-quote blockquote p:last-child {
+  margin-bottom: 0;
+}
+.rv-quote figcaption {
+  margin-top: 14px;
+  font-family: var(--rv-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--rv-ink-3);
+}
+/* pull quote — bigger, borderless, display face (mirrors .rv-bigquote on pangaea.id) */
+.rv-quote--pull {
+  margin: 30px 0;
+}
+.rv-quote--pull blockquote {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--rv-display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.6vw, 1.65rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--rv-ink);
+}
+.rv-quote--pull figcaption {
+  margin-top: 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  letter-spacing: normal;
+  color: var(--rv-ink-3);
+}

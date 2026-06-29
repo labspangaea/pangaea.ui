@@ -1,0 +1,36 @@
+/* @pangaea/ds-table — responsive hairline table. Ported from pangaea.id
+   (un-scoped from `.rv-prose` so it works standalone). */
+.rv-table-wrap {
+  overflow-x: auto;
+  margin: 22px 0;
+  border: 1px solid var(--rv-line);
+  border-radius: var(--rv-r-sm);
+}
+.rv-table-wrap table {
+  width: 100%;
+  min-width: 440px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.rv-table-wrap th,
+.rv-table-wrap td {
+  text-align: left;
+  padding: 10px 13px;
+  border-bottom: 1px solid var(--rv-line);
+  vertical-align: top;
+  color: var(--rv-ink-2);
+}
+.rv-table-wrap thead th {
+  font-family: var(--rv-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rv-ink-3);
+  background: var(--rv-bg-alt);
+}
+.rv-table-wrap tbody tr:last-child td {
+  border-bottom: none;
+}
+.rv-table-wrap td code {
+  word-break: break-word;
+}
