@@ -1,16 +1,19 @@
 ---
 name: pangaea-ds
 description: >-
-  Workflow for building, auditing, and polishing components in the pangaea.ui design system — the
-  rv-* two-hex blue-on-white system shipped as @pangaea/ds-* packages with an Astro gallery. Use
-  this whenever you add or change a @pangaea/ds-* component, author or edit a gallery story in
-  apps/gallery, run a drift / audit / polish pass on the design system, touch any
-  packages/*/src/styles.css or packages/tokens/src/tokens.scss, or work involves the --rv-* tokens,
-  WCAG AA contrast in this repo, or the parallel-agent audit→polish→re-audit loop. It enforces the
-  things that are easy to get wrong here: zero visual drift from pangaea.id's revamp.css, exhaustive
-  gallery controls (JSON for arrays), accent-ink token discipline for AA, and the Emil-Kowalski
-  motion conventions. Reach for it even when the user just says "add a component", "fix the
-  styles", "audit the gallery", or "make it match the site" inside this repo.
+  Workflow for building, auditing, and polishing components inside the pangaea.ui design-system repo
+  — the rv-* two-hex blue-on-white system shipped as @pangaea/ds-* packages with an Astro gallery.
+  Use this whenever you add or change a @pangaea/ds-* component, author or edit a gallery story in
+  apps/gallery, run a drift / audit / polish pass on the system, touch any packages/*/src/styles.css
+  or packages/tokens/src/tokens.scss, or the work involves the --rv-* tokens, WCAG AA contrast, the
+  JSON array controls, or the parallel-agent audit→polish→re-audit loop in this repo. It enforces
+  what's easy to get wrong here: zero visual drift from pangaea.id's revamp.css, exhaustive gallery
+  controls (arrays as JSON), accent-ink token discipline for AA, and the Emil-Kowalski motion
+  conventions. Reach for it even when the user just says "add a component", "fix the styles", "audit
+  the gallery", or "make it match the site" — as long as they mean the @pangaea/ds-* packages or the
+  gallery. Do NOT use it for editing the live pangaea.id site itself (apps/labs marketing pages), for
+  building a brand-new or unrelated design system, for the Kanvo gallery, or for generic
+  CSS / contrast / Storybook / animation questions outside this repo.
 ---
 
 # pangaea.ui design system
