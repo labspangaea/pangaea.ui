@@ -28,7 +28,7 @@ pangaea.ui/
     chart/     @labspangaea/ds-chart    theme-aware Chart.js wrapper (reads --rv-* live)
     …          (+ 32 more component packages — full roster under "Components")
   apps/
-    gallery/   @labspangaea/gallery     the /gallery catalog (Astro island; not published)
+    gallery/   @labspangaea/gallery     the catalog served at the site root (Astro island; not published)
 ```
 
 Each component is its **own package with its own version**, all published to **one** registry —
@@ -57,7 +57,7 @@ See the plan for the full exploration.
 ```bash
 npm install            # install the workspace (npm workspaces — no pnpm needed)
 npm run build:pkgs     # build all ds-* packages (sass for tokens, tsc for components)
-npm run gallery        # astro dev → http://localhost:4321/gallery  (the catalog, #Chart etc.)
+npm run gallery        # astro dev → http://localhost:4321  (the catalog at root, #chart etc.)
 npm run build          # build packages + the gallery (static)
 ```
 

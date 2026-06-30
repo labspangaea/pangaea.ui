@@ -1,3 +1,8 @@
 ---
-return Astro.redirect("/gallery");
+import Base from "../layouts/Base.astro";
+import { Gallery } from "../gallery/Gallery";
 ---
+
+<Base title="Pangaea Design System · Gallery">
+  <Gallery client:load />
+</Base>

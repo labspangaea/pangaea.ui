@@ -39,7 +39,7 @@ full topology and `PRODUCT.md` for the register/brand contract.
 ```bash
 npm install                                            # npm workspaces (NOT pnpm — not installed)
 npm run build:pkgs                                     # build all packages (sass tokens + tsc comps)
-npm run gallery                                        # astro dev → :4321/gallery
+npm run gallery                                        # astro dev → :4321 (gallery at root)
 npm run build                                          # build:pkgs + static gallery
 npx tsc --noEmit -p apps/gallery/tsconfig.json         # REQUIRED typecheck (see below)
 ```

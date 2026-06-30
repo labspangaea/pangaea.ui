@@ -1,8 +1,5 @@
 ---
-import Base from "../layouts/Base.astro";
-import { Gallery } from "../gallery/Gallery";
+// The gallery now lives at the site root (`/`). Keep `/gallery` as a redirect so old
+// links (and the deep-link hashes appended to them) still resolve.
+return Astro.redirect("/");
 ---
-
-<Base title="Pangaea Design System · Gallery">
-  <Gallery client:load />
-</Base>
