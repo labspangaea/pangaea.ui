@@ -1,8 +1,10 @@
 name: Release
 
-# Per-component publishing. Changesets land on main →  a "Version Packages" PR is
-# opened; merging it bumps ONLY the changed @labspangaea/ds-* packages and publishes
-# them to GitHub Packages. The gallery is ignored (see .changeset/config.json).
+# Per-component publishing, fully automated. A changeset landing on main triggers this:
+#  - changesets PENDING  → changesets/action opens a "Version Packages" PR, then the next
+#    step AUTO-MERGES it and publishes — all in this one run, no manual merge.
+#  - changesets NONE     → it publishes any unpublished versions directly.
+# Only the changed @labspangaea/ds-* packages move; the gallery is ignored (.changeset/config.json).
 on:
   push:
     branches: [main]
@@ -13,9 +15,9 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write # commit the version bump / open the Version Packages PR
+  contents: write # commit the version bump / merge the Version Packages PR
   packages: write # publish to GitHub Packages
-  pull-requests: write # open/update the Version Packages PR
+  pull-requests: write # open + merge the Version Packages PR
 
 jobs:
   release:
@@ -41,7 +43,9 @@ jobs:
 
       - run: npm run build:pkgs # fail fast if any package doesn't build
 
-      - name: Create "Version Packages" PR or publish
+      # Pending changesets → opens the "Version Packages" PR (no publish). None → publishes.
+      - name: Open "Version Packages" PR or publish
+        id: changesets
         uses: changesets/action@v1
         with:
           version: npm run version-packages
@@ -49,4 +53,25 @@ jobs:
           commit: "chore: version packages"
           title: "chore: version packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # changesets/action needs this to open the PR
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # needed to open/merge the PR
+
+      # If a Version PR was just opened, auto-merge it and publish IN THIS SAME RUN. We can't
+      # rely on the merge to re-trigger the publish, because pushes made by GITHUB_TOKEN don't
+      # start new workflow runs — so we merge, pull the bumped main, and publish here.
+      - name: Auto-merge the Version PR + publish
+        if: steps.changesets.outputs.pullRequestNumber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR="${{ steps.changesets.outputs.pullRequestNumber }}"
+          echo "Auto-merging Version Packages PR #$PR"
+          # GitHub computes mergeability asynchronously — wait for it, then squash-merge.
+          for i in $(seq 1 10); do
+            [ "$(gh pr view "$PR" --json mergeable --jq .mergeable)" = "MERGEABLE" ] && break
+            sleep 3
+          done
+          gh pr merge "$PR" --squash --delete-branch
+          # Pull the merged main (versions bumped, changesets consumed) and publish from it.
+          git fetch origin main
+          git checkout origin/main
+          npm run release # build:pkgs && changeset publish → ships the new versions
