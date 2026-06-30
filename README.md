@@ -31,9 +31,10 @@ pangaea.ui/
     gallery/   @labspangaea/gallery     the /gallery catalog (Astro island; not published)
 ```
 
-Each component is its **own package with its own version**, all published to **one** registry
-(`@labspangaea` on GitHub Packages). This is the standard per-component-versioning shape (Radix/MUI/
-Chakra) — not a repo-per-component polyrepo, and not one monolithic package.
+Each component is its **own package with its own version**, all published to **one** registry —
+[**GitHub Packages** under `@labspangaea`](https://github.com/labspangaea?tab=packages&repo_name=pangaea.ui).
+This is the standard per-component-versioning shape (Radix/MUI/Chakra) — not a repo-per-component
+polyrepo, and not one monolithic package.
 
 ## Federation-ready, federation-not-built (deliberate)
 
@@ -126,5 +127,7 @@ component (arrays use a JSON object control, never string concat).
   on touch, a single ease-out `--rv-ease`, and a `prefers-reduced-motion` fallback on every animation.
 - **Zero drift:** every component is diffed against `revamp.css` property-by-property (light + dark +
   responsive + pseudo-states). Always check the live site before changing a component (see CLAUDE.md).
-- **Before first publish:** the repo is live on GitHub. Set the `@labspangaea` GitHub Packages registry +
-  `NODE_AUTH_TOKEN` in CI, then `npm run changeset` for the initial `0.1.0` release.
+- **Published:** all 38 packages are live at **0.1.0** on
+  [GitHub Packages](https://github.com/labspangaea?tab=packages&repo_name=pangaea.ui) (`@labspangaea`).
+  Future versions ship via `npm run changeset` → the auto-opened "Version Packages" PR → CI publishes
+  only the changed packages.
