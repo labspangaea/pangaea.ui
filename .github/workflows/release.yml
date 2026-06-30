@@ -1,33 +1,47 @@
 name: Release
 
-# Per-component publishing: a "Version Packages" PR is opened when changesets land
-# on main; merging it bumps ONLY the changed @labspangaea/ds-* packages and publishes
-# them to GitHub Packages. The gallery is ignored (changeset config).
+# Per-component publishing. Changesets land on main →  a "Version Packages" PR is
+# opened; merging it bumps ONLY the changed @labspangaea/ds-* packages and publishes
+# them to GitHub Packages. The gallery is ignored (see .changeset/config.json).
 on:
   push:
     branches: [main]
 
+# Never run two releases at once; let an in-flight publish finish (don't cancel it).
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
-  contents: write
-  packages: write
-  pull-requests: write
+  contents: write # commit the version bump / open the Version Packages PR
+  packages: write # publish to GitHub Packages
+  pull-requests: write # open/update the Version Packages PR
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      # GitHub Packages auth for EVERY step (npm ci resolution + changeset publish).
+      # The repo .npmrc reads ${NODE_AUTH_TOKEN}; the automatic GITHUB_TOKEN can
+      # publish @labspangaea/* because each package.json has a matching `repository`.
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # changesets needs full history to diff packages + write changelogs
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://npm.pkg.github.com
+          scope: "@labspangaea" # binds the CI .npmrc auth to our scope (the 403 fix)
+          cache: npm
 
       - run: npm ci
 
-      - run: npm run build:pkgs
+      - run: npm run build:pkgs # fail fast if any package doesn't build
 
-      - name: Create Release PR or publish
+      - name: Create "Version Packages" PR or publish
         uses: changesets/action@v1
         with:
           version: npm run version-packages
@@ -35,5 +49,4 @@ jobs:
           commit: "chore: version packages"
           title: "chore: version packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # changesets/action needs this to open the PR
