@@ -1,0 +1,50 @@
+name: Deploy
+
+# Builds the design-system gallery and deploys it to ui.pangaea.id via Cloudflare Pages —
+# mirrors pangaea.id's deploy (apps/labs → labs.pangaea.id). On pull requests it builds +
+# typechecks as a CI gate (no deploy); on push to main it deploys, but ONLY once the
+# Cloudflare secrets exist (until then the build/typecheck pass as a gate without a red X).
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    env:
+      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+
+      # Build the @labspangaea/ds-* packages first: the gallery imports their compiled dist
+      # (types + JS via package `exports`), so they must exist before the typecheck and build.
+      - run: npm run build:pkgs
+
+      # astro build runs through esbuild, which strips types WITHOUT checking them — so a bad
+      # prop or implicit-any would ship silently. Typecheck the gallery explicitly here.
+      - run: npx tsc --noEmit -p apps/gallery/tsconfig.json
+
+      - name: Build gallery (static)
+        run: npm run build -w @labspangaea/gallery # → apps/gallery/dist
+
+      # Deploys to Cloudflare Pages ONLY on push to main AND once CLOUDFLARE_API_TOKEN is set.
+      # One-time setup: add CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID as repo secrets, then
+      # add the custom domain `ui.pangaea.id` to the `pangaea-ui` Pages project in the Cloudflare
+      # dashboard. Until the secret exists this step is skipped and the job still passes.
+      - name: Deploy ui.pangaea.id to Cloudflare Pages
+        if: ${{ github.event_name == 'push' && env.CF_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/gallery/dist --project-name=pangaea-ui --branch=main
