@@ -73,16 +73,77 @@ body {
   color: var(--rv-accent-ink);
   font-weight: 600;
 }
-.sb-group {
-  margin-bottom: 14px;
+/* filter box */
+.sb-search {
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 7px 10px;
+  border: 1px solid var(--rv-line-2);
+  border-radius: var(--rv-r-sm);
+  background: var(--rv-bg);
+  color: var(--rv-ink);
+  font: inherit;
+  font-size: 0.84rem;
 }
+.sb-search::placeholder {
+  color: var(--rv-ink-3);
+}
+.sb-noresult {
+  padding: 4px 8px;
+}
+.sb-group {
+  margin-bottom: 2px;
+}
+/* group header is a disclosure button: chevron · label · count */
 .sb-group-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: var(--rv-r-sm);
   font-family: var(--rv-mono);
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--rv-ink-3);
-  padding: 4px 8px;
+  transition: background 0.14s var(--rv-ease), color 0.14s var(--rv-ease);
+}
+.sb-group-head:hover {
+  background: var(--rv-bg-tint);
+  color: var(--rv-ink-2);
+}
+.sb-chev {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-left: 4px solid currentColor;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  opacity: 0.75;
+  transition: transform 0.16s var(--rv-ease);
+}
+.sb-chev[data-open="true"] {
+  transform: rotate(90deg);
+}
+.sb-group-name {
+  flex: 1;
+  text-align: left;
+}
+.sb-group-count {
+  letter-spacing: 0;
+  opacity: 0.7;
+}
+.sb-group-items .sb-item {
+  padding-left: 20px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb-chev {
+    transition: none;
+  }
 }
 .sb-item {
   display: block;
@@ -296,29 +357,13 @@ body {
   }
   .sb-menu {
     height: auto;
+    max-height: 46vh; /* same collapsible list as desktop, just capped + scrollable */
+    overflow-y: auto;
     position: static;
     border-right: none;
     border-bottom: 1px solid var(--rv-line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 6px;
-    align-items: center;
   }
   .sb-brand {
-    width: 100%;
-    padding-bottom: 8px;
-  }
-  .sb-group {
-    margin: 0;
-    display: contents;
-  }
-  .sb-group-head {
-    display: none;
-  }
-  .sb-item {
-    width: auto;
-    padding: 4px 9px;
-    font-size: 0.8rem;
-    border: 1px solid var(--rv-line);
+    padding-bottom: 10px;
   }
 }

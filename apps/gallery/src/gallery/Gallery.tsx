@@ -109,13 +109,20 @@ export function Gallery() {
   const [theme, setTheme] = React.useState<"light" | "dark">("light");
   const [lang, setLang] = React.useState<Lang>("en");
   const [st, setSt] = React.useState(() => storyState(STORIES[0]!.id));
+  const [query, setQuery] = React.useState("");
+  // expanded groups — start with just the active component's group open
+  const [open, setOpen] = React.useState<Set<string>>(() => new Set([STORIES[0]!.group]));
 
   // deep-link via hash (+ initial theme); also respond to back/forward + manual hash edits
   React.useEffect(() => {
     setTheme(document.documentElement.getAttribute("data-rv-theme") === "dark" ? "dark" : "light");
     const apply = () => {
       const h = location.hash.slice(1);
-      if (h && STORIES.some((s) => s.id === h)) setSt(storyState(h));
+      const found = STORIES.find((s) => s.id === h);
+      if (found) {
+        setSt(storyState(found.id));
+        setOpen((p) => new Set(p).add(found.group)); // reveal the linked component's group
+      }
     };
     apply();
     window.addEventListener("hashchange", apply);
@@ -124,12 +131,27 @@ export function Gallery() {
 
   const select = (id: string) => {
     setSt(storyState(id));
+    const g = STORIES.find((s) => s.id === id)?.group;
+    if (g) setOpen((p) => new Set(p).add(g)); // keep the picked component's group open
     history.replaceState(null, "", `#${id}`);
   };
 
   const story = STORIES.find((s) => s.id === st.id)!;
   const args = st.args;
   const set = (k: string, v: unknown) => setSt((p) => ({ ...p, args: { ...p.args, [k]: v } }));
+
+  // filter by name; hide empty groups. While searching, every matching group renders expanded.
+  const q = query.trim().toLowerCase();
+  const menuGroups = GROUPS.map((g) => ({
+    g,
+    items: STORIES.filter((s) => s.group === g && (!q || s.name.toLowerCase().includes(q))),
+  })).filter((grp) => grp.items.length > 0);
+  const toggleGroup = (g: string) =>
+    setOpen((p) => {
+      const n = new Set(p);
+      n.has(g) ? n.delete(g) : n.add(g);
+      return n;
+    });
 
   return (
     <div className="rv-page">
@@ -140,22 +162,50 @@ export function Gallery() {
           <h1 className="sb-brand">
             Pangaea<b>UI</b>
           </h1>
-          {GROUPS.map((g) => (
-            <div key={g} className="sb-group" role="group" aria-label={g}>
-              <div className="sb-group-head">{g}</div>
-              {STORIES.filter((s) => s.group === g).map((s) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  className={"sb-item" + (s.id === story.id ? " is-active" : "")}
-                  aria-current={s.id === story.id ? "true" : undefined}
-                  onClick={() => select(s.id)}
-                >
-                  {s.name}
-                </button>
-              ))}
-            </div>
-          ))}
+          <input
+            type="search"
+            className="sb-search"
+            placeholder="Filter components…"
+            aria-label="Filter components"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          {menuGroups.length === 0 ? (
+            <p className="sb-muted sb-noresult">No components match “{query}”.</p>
+          ) : (
+            menuGroups.map(({ g, items }) => {
+              const expanded = q !== "" || open.has(g);
+              return (
+                <div key={g} className="sb-group">
+                  <button
+                    type="button"
+                    className="sb-group-head"
+                    aria-expanded={expanded}
+                    onClick={() => toggleGroup(g)}
+                  >
+                    <span className="sb-chev" data-open={expanded} aria-hidden="true" />
+                    <span className="sb-group-name">{g}</span>
+                    <span className="sb-group-count">{items.length}</span>
+                  </button>
+                  {expanded ? (
+                    <div className="sb-group-items" role="group" aria-label={g}>
+                      {items.map((s) => (
+                        <button
+                          key={s.id}
+                          type="button"
+                          className={"sb-item" + (s.id === story.id ? " is-active" : "")}
+                          aria-current={s.id === story.id ? "true" : undefined}
+                          onClick={() => select(s.id)}
+                        >
+                          {s.name}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })
+          )}
         </nav>
 
         {/* —— center: canvas —— */}
